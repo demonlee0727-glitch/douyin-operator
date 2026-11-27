@@ -1,0 +1,10 @@
+data/
+data-demo/
+demo-data/
+__pycache__/
+*.pyc
+.env
+.env.*
+.DS_Store
+*.sqlite3*
+
