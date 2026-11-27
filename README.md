@@ -4,7 +4,7 @@
 
 例如，一条生活科普视频发出 24 小时后，5 秒留存率只有 30.0%，同系列此前四条作品的中位数是 52.5%。工作台会把作品、对照数和两组数值列在一起，提醒编辑检查开头。你可以把“第一镜就让观众看到实验”写进下一条简报，发布后回到同一时间窗口验证。下文用这个内置案例演示。
 
-[下载项目 ZIP](https://github.com/demonlee0727-glitch/douyin-operator/archive/refs/heads/main.zip) · [运营值班手册](OPERATIONS.md) · [CSV 字段模板](examples/metrics.csv) · [与 Codex 协作](AGENTS.md)
+[下载 v0.1.0 工作台 ZIP](https://github.com/demonlee0727-glitch/douyin-operator/releases/download/v0.1.0/douyin-operator-v0.1.0.zip) · [运营值班手册](OPERATIONS.md) · [CSV 字段模板](examples/metrics.csv) · [与 Codex 协作](AGENTS.md)
 
 ## 第一次使用
 
@@ -13,6 +13,8 @@
 | 先看一眼 | 下载 ZIP，完整解压，在电脑上双击 **快速预览.html** | 离线浏览八个页面、查看演示诊断和实验，无需安装 Python |
 | 亲手走一遍 | 在解压目录执行 `python3 app.py serve --demo --open` | 在独立演示库中编辑简报、录入观众问题、试做实验 |
 | 运营自己的账号 | macOS 双击 **启动工作台.command**，Windows 双击 **启动工作台.bat** | 在「数据接入」填写定位、导入作品数据，按自己的关键词开始找同行 |
+
+上方版本包内的 macOS 启动器带有执行权限。若使用 GitHub 自动生成的源码 ZIP 或 Git 克隆，可直接运行以下命令；要双击启动器，也可以先在项目目录执行 `chmod +x 启动工作台.command`。
 
 基础工作台要求 **Python 3.9+**，仅使用标准库。使用 Git 的读者可直接运行：
 
