@@ -1,7 +1,35 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>抖音运营工作台</title><style>/*__CSS__*/</style></head>
-<body><header><div class="logo" aria-label="运营工作台标志"><i></i><i></i><i></i></div><b>抖音运营工作台</b><span id="mode"></span><time id="fresh"></time></header>
-<div class="shell"><aside><nav id="nav" aria-label="工作区导航"></nav><div class="account" id="account"></div></aside>
-<main><div id="notice" role="status" hidden></div><div class="heading"><div><div class="eyebrow" id="date"></div><h1 id="title"></h1></div><div class="controls"><button id="sync">立即检查</button><button id="print">打印 / PDF</button></div></div>
-<section id="view"></section></main></div><script type="application/json" id="state">/*__STATE__*/</script><script>/*__JS__*/</script></body></html>
-
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>抖音运营工作台</title>
+  <style>/*__CSS__*/</style>
+</head>
+<body>
+  <div class="chassis">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span id="account"></span></div>
+      <div class="nameplate">抖音运营工作台</div>
+      <div class="connection"><span class="status-dot" aria-hidden="true"></span><span id="mode"></span></div>
+    </header>
+    <div class="shell">
+      <aside><nav id="nav" aria-label="工作区导航"></nav></aside>
+      <main>
+        <div id="notice" role="status" hidden></div>
+        <div class="heading">
+          <div><div class="eyebrow" id="date"></div><h1 id="title"></h1></div>
+          <div class="controls tools">
+            <button id="sync" type="button">立即检查</button>
+            <button id="print" type="button" title="打印或另存为 PDF" aria-label="打印或另存为 PDF"></button>
+          </div>
+        </div>
+        <div id="view"></div>
+        <footer><span class="footer-line"></span><time id="fresh"></time></footer>
+      </main>
+    </div>
+  </div>
+  <script type="application/json" id="state">/*__STATE__*/</script>
+  <script>/*__JS__*/</script>
+</body>
+</html>

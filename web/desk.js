@@ -8,7 +8,6 @@ const tag=(x,c="")=>'<span class="tag '+c+'">'+esc(x)+'</span>';
 const empty=t=>'<p class="empty">'+esc(t)+'</p>';
 const card=(t,body)=>'<article class="card"><h3>'+esc(t)+'</h3>'+body+'</article>';
 const box=(t,body)=>'<section class="box"><h2>'+esc(t)+'</h2>'+body+'</section>';
-const stat=(n,t)=>'<div class="card stat"><small>'+esc(t)+'</small><strong>'+esc(n)+'</strong></div>';
 const link=(url,title)=>'<a target="_blank" rel="noreferrer" href="'+esc(url)+'">'+esc(title)+'</a>';
 const searchUrl=q=>"https://www.douyin.com/search/"+encodeURIComponent(q);
 function input(n,t,v="",type="text",required=true){return '<label>'+esc(t)+'<input name="'+n+'" type="'+type+'" value="'+esc(v)+'" '+(required?"required":"")+'></label>'}
@@ -21,13 +20,108 @@ const tbl=(heads,data)=>'<div class="table"><table><thead><tr>'+heads.map(x=>'<t
 const studio="https://creator.douyin.com/creator-micro/home";
 const day=()=>S.now.slice(0,10);
 function planForm(extra="",value=""){return form("plan",extra+input("title","原创选题",value)+input("due","计划发布日",day(),"date")+area("brief","本期具体怎么拍，以及要观察哪个指标"),"加入排期")}
+const paths = {
+  home: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+  pulse: '<path d="M3 12h4l3-7 4 14 3-7h4"/>',
+  radar: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="m12 12 7-7"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7.5 3v4m9-4v4M3 10h18m-14 4h3m4 0h3"/>',
+  chat: '<path d="M20.5 14.5a3 3 0 0 1-3 3H10l-5 3v-3.2a3 3 0 0 1-2-2.8V7a3 3 0 0 1 3-3h11.5a3 3 0 0 1 3 3zM7 9h9m-9 4h6"/>',
+  flask: '<path d="M9 3h6m-5 0v6l-5.7 9.2A2 2 0 0 0 6 21h12a2 2 0 0 0 1.7-2.8L14 9V3M8 15h8"/>',
+  book: '<path d="M12 6c-3-2-6-2.5-9-1.5V19c3-1 6-1 9 1 3-2 6-2 9-1V4.5C18 3.5 15 4 12 6Zm0 0v14"/>',
+  source: '<ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+  sync: '<path d="M3 10a9 9 0 0 1 15-5l2 2m0-4v4h-4M21 14a9 9 0 0 1-15 5l-2-2m0 4v-4h4"/>',
+  print: '<path d="M7 8V3h10v5M7 17H4V9h16v8h-3"/><path d="M7 14h10v7H7zm9-3h1"/>',
+  arrow: '<path d="m10 5 7 7-7 7"/>',
+  import: '<path d="M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5"/>',
+  list: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  dial: '<path d="M4 17a9 9 0 1 1 16 0M12 12l4-5"/><circle cx="12" cy="12" r="1.7"/>'
+};
+const tabIcons = ['home','pulse','radar','calendar','chat','flask','book','source'];
+const icon = (name,size=20) => '<svg class="icon" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
+const tabButton = (dest,body,cls='',name=dest) => '<button type="button" class="'+cls+'" data-tab="'+esc(dest)+'" title="'+esc(name)+'" aria-label="'+esc(name)+'">'+body+'</button>';
+const cap = (label,glyph) => '<div class="panel-title">'+icon(glyph,16)+'<h2>'+esc(label)+'</h2></div>';
+const readout = (label,value,unit='') => '<div class="readout"><span>'+esc(label)+'</span><strong>'+esc(value)+'<small>'+esc(unit)+'</small></strong></div>';
+const viewChoice = {home:'schedule', diag:'retention5'};
+const choices = {
+  home: [['schedule','排期进度'],['feedback','反馈处理']],
+  diag: [['retention5','5 秒留存'],['completion','完播率']]
+};
+function dialModel(kind){
+  const key=viewChoice[kind];
+  if(kind==='diag'){
+    const work=S.decisions[0];
+    const signal=work?.signals.find(s=>s.key===key);
+    const value=signal && signal.value.endsWith('%') ? parseFloat(signal.value) : null;
+    return {value,label:key==='retention5'?'5 秒留存率':'完播率',context:work?.title||'等待作品快照',left:[['历史中位数',signal && signal.n>=3 ? signal.base:'—'],['可比作品',signal?.n??0,'条']],
+      entry:['数据接入','source'],secondary:['增长实验','flask']};
+  }
+  const feedback=key==='feedback';
+  const total=feedback?S.comments.length:S.profile.weekly_capacity;
+  const done=feedback?S.comments.filter(c=>c.status!=='待处理').length:S.forecast;
+  return {value:total?100*done/total:null,label:feedback?'反馈处理率':'七天排期覆盖率',context:feedback?'已处理反馈 / 全部反馈':'未来七天 / 每周产能',
+    left:feedback?[['已处理',done,'条'],['待处理',total-done,'条']]:[['已排期',done,'条'],['每周产能',total,'条']],
+    entry:['内容排期','calendar'],secondary:['评论互动','chat']};
+}
+function meterPanel(kind){
+  const m=dialModel(kind), value=m.value;
+  const displayed=value===null?'—':String(Number(value.toFixed(kind==='diag'?1:0)));
+  const arc=value===null?0:Math.max(0,Math.min(value,100))*2.7;
+  const segment=choices[kind].map(([key,label])=>'<button type="button" data-dial="'+key+'" aria-pressed="'+(viewChoice[kind]===key)+'">'+label+'</button>').join('');
+  return '<section class="instrument"><div class="instrument-head">'+cap(kind==='home'?'运营仪表盘':'作品表现仪表盘','dial')+
+    '<span class="instrument-sub">'+(kind==='home'?'未来 7 天':'最近一篇')+'</span></div><div class="instrument-body"><div class="readouts">'+m.left.map(a=>readout(...a)).join('')+
+    '</div><div class="meter-assembly"><div class="outer-orbit"></div><div class="meter '+(value===null?'no-value':'')+'" style="--sweep:'+arc+'deg">'+
+    '<div class="dial-track"></div><div class="ticks"></div><div class="knob"><i class="indicator"></i><strong>'+esc(displayed)+(value===null?'':'<small>%</small>')+'</strong><span>'+esc(m.label)+'</span></div></div>'+
+    tabButton(m.entry[0],icon(m.entry[1],16),'orb orb-a')+tabButton(m.secondary[0],icon(m.secondary[1],16),'orb orb-b')+
+    '</div></div><div class="dial-caption">'+esc(m.context)+'</div><div class="segments" aria-label="仪表指标">'+segment+'</div></section>';
+}
+function weekSeries(){
+  const start=Date.parse(S.now.slice(0,10)+'T00:00:00Z');
+  return Array.from({length:7},(_,i)=>{
+    const day=new Date(start+i*86400000).toISOString().slice(0,10);
+    return {label:day.slice(5).replace('-','/'),value:S.plans.filter(p=>p.due===day).length};
+  });
+}
+function linePlot(samples,unit){
+  const w=316,h=94,x0=14,x1=302,y0=12,y1=72;
+  const maximum=Math.max(1,...samples.map(a=>a.value));
+  const point=(v,i)=>[samples.length===1?(x0+x1)/2:x0+(x1-x0)*i/Math.max(1,samples.length-1),y1-(y1-y0)*v/maximum];
+  const points=samples.map((a,i)=>point(a.value,i));
+  let grid='';
+  for(const y of [y0,(y0+y1)/2,y1])grid+='<path class="gridline" d="M'+x0+' '+y+'H'+x1+'"/>';
+  const line=points.map((p,i)=>(i?'L':'M')+p.map(a=>a.toFixed(2)).join(' ')).join(' ');
+  const circles=points.map(([x,y],i)=>'<circle cx="'+x+'" cy="'+y+'" r="3"><title>'+esc(samples[i].label+' · '+samples[i].value+unit)+'</title></circle>').join('');
+  const labels=samples.length?'<div class="axis"><span>'+esc(samples[0].label)+'</span><span>'+esc(samples[samples.length-1].label)+'</span></div>':'';
+  return '<div class="chart"><svg preserveAspectRatio="none" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(samples.map(v=>v.label+' '+v.value+unit).join('，')||'暂无可绘制数据')+'">'+grid+
+    (points.length?'<path class="chart-fill" d="'+line+' L'+points[points.length-1][0]+' '+y1+' L'+points[0][0]+' '+y1+'Z"/><path class="chart-line" d="'+line+'"/>'+circles:'')+'</svg>'+
+    (points.length?'':'<span class="chart-empty">等待作品快照</span>')+labels+'</div>';
+}
+function sidePanels(kind){
+  const diag=kind==='diag', key=viewChoice.diag;
+  const samples=diag?S.decisions.slice(0,7).reverse().flatMap(d=>{
+    const s=d.signals.find(a=>a.key===key);
+    return s?.value.endsWith('%')?[{label:d.published.slice(5,10).replace('-','/'),value:parseFloat(s.value)}]:[];
+  }):weekSeries();
+  const title=diag?(key==='retention5'?'近期作品留存':'近期作品完播'):'七天排期分布';
+  const desc=diag?'各作品采用快照':'按计划发布日期';
+  return '<div class="side-panels"><section class="surface trend-card">'+cap(title,'pulse')+'<div class="plot-info">'+esc(desc)+'<span><i></i>'+esc(diag?'比例':'条数')+'</span></div>'+linePlot(samples,diag?'%':' 条')+'</section>'+
+    '<section class="surface data-card">'+cap('作品数据','source')+'<div class="data-numbers">'+readout('已记录作品',S.count,'条')+readout('指标快照',S.snapshot_count,'份')+'</div>'+
+    tabButton('数据接入',icon('import',15)+'<span>'+(S.static?'查看数据接入':'导入作品快照')+'</span>'+icon('arrow',13),'data-link',S.static?'查看数据接入':'导入作品快照')+'</section></div>';
+}
+function dashboard(kind){return '<div class="dashboard">'+meterPanel(kind)+sidePanels(kind)+'</div>'}
+const taskPage={'数据':'数据接入','排期':'内容排期','选题':'内容排期','诊断':'账号诊断','复盘':'账号诊断','互动':'评论互动','对标':'同行雷达','实验':'增长实验'};
 function today(){
- const blocks='<div class="stats">'+stat(S.count,"已记录作品")+stat(S.snapshot_count,"指标快照")+stat(S.forecast+"/"+S.profile.weekly_capacity,"未来七天排期")+'</div>';
- const jobs=S.today.map(j=>'<div class="item">'+tag(j.kind)+'<h3>'+esc(j.title)+'</h3><p>'+esc(j.detail)+'</p></div>').join("");
- return blocks+'<div class="grid">'+box("今日优先事项",jobs)+box("本轮运营",'<h3>'+esc(S.profile.name)+'</h3><p>'+esc(S.profile.promise)+'</p><p class="sub">'+esc(S.profile.audience)+'</p>'+S.profile.keywords.map(k=>tag(k)).join("")+'<div class="item"><h3>最近观察</h3>'+esc(S.last_observed||"尚未接入自己的作品")+'</div>'+[S.weekly,S.monthly].map(r=>'<div class="item"><b>近 '+r.days+' 天</b><p>'+r.works+' 条已记录作品 · '+r.plans+' 条排期</p><small>'+esc(Object.entries(r.series).map(([k,v])=>k+" "+v).join(" / ")||"尚无该周期作品")+r.signals.map(t=>"<p>"+esc(t)+"</p>").join("")+"<p>待补对照 "+r.insufficient+" 条作品</p>"+'</small></div>').join(""))+'</div>'+box("最近运行",S.events.slice(0,6).map(e=>'<div class="item"><small>'+esc(e.created.slice(5,16))+' · '+esc(e.kind)+'</small><div>'+esc(e.message)+'</div></div>').join("")||empty("首轮同步后显示运行记录。"));
+  const jobs=S.today.map(j=>'<div class="queue-row"><span class="queue-icon">'+icon(tabIcons[tabs.indexOf(taskPage[j.kind]||'今日工作')],17)+'</span><div><small>'+esc(j.kind)+'</small><h3>'+esc(j.title)+'</h3><p>'+esc(j.detail)+'</p></div>'+
+      tabButton(taskPage[j.kind]||'今日工作',icon('arrow',14),'row-go','前往'+(taskPage[j.kind]||'今日工作'))+'</div>').join('');
+  const periods=[S.weekly,S.monthly].map(r=>'<div class="item"><h3>近 '+r.days+' 天</h3><p>'+r.works+' 条已记录作品 · '+r.plans+' 条排期</p><small>'+
+      esc(Object.entries(r.series).map(([k,v])=>k+' '+v).join(' / ')||'尚无该周期作品')+'</small>'+r.signals.map(t=>'<p>'+esc(t)+'</p>').join('')+'<p class="sub">待补对照 '+r.insufficient+' 条作品</p></div>').join('');
+  const history=S.events.slice(0,6).map(e=>'<div class="item"><small>'+esc(e.created.slice(5,16))+' · '+esc(e.kind)+'</small><div>'+esc(e.message)+'</div></div>').join('');
+  return dashboard('home')+'<div class="grid overview-grid">'+box('今日优先事项',jobs||empty('目前没有待处理事项。'))+
+    box('本轮运营','<h3>'+esc(S.profile.name)+'</h3><p>'+esc(S.profile.promise)+'</p><p class="sub">'+esc(S.profile.audience)+'</p>'+S.profile.keywords.map(k=>tag(k)).join('')+
+    '<div class="item"><small>最近观察</small><p>'+esc(S.last_observed||'尚未接入自己的作品')+'</p></div>'+fold('近 7 天与 30 天复盘',periods))+'</div>'+box('最近运行',history||empty('首轮同步后显示运行记录。'));
 }
 function diagnostics(){
- return '<p class="sub">比较同系列、同流量类型、同观察窗口的历史中位数。窗口外和缺字段会单列，未知指标不计为零。</p>'+(!S.decisions.length?box("等待自己的作品",empty("在「数据接入」导入真实快照后，这里会列出每条作品的依据和下一步。")):S.decisions.map(d=>box(d.title,tag(d.series)+tag(d.traffic)+tag(d.window)+tag(d.label,"warn")+'<p>'+(d.trend?"同源相邻观察间增加 "+esc(d.trend.delta)+" 次播放，跨度 "+esc(d.trend.hours)+" 小时。 ":"")+esc(d.evidence)+'</p><b>'+esc(d.action)+'</b><p class="sub">采用快照 '+esc(d.observed.slice(0,16))+' · 最近采集 '+esc(d.latest_observed.slice(0,16))+' · '+esc(d.origin)+'</p>'+tbl(["指标","本篇","历史中位数","对照作品数"],d.signals.map(s=>[s.name,s.value,s.n>=3?s.base:"待积累",s.n]))+fold("最新原始指标",tbl(["指标","值"],Object.entries(d.latest).map(([k,v])=>[({"plays":"播放","likes":"赞","comments":"评论","shares":"分享","saves":"收藏","follows":"新增关注","completion":"完播率","retention5":"5秒留存率"})[k],v==null?"未提供":(["completion","retention5"].includes(k)?(100*v).toFixed(1)+"%":v)])) ))).join(""));
+ return dashboard('diag')+'<p class="sub diag-note">比较同系列、同流量类型、同观察窗口的历史中位数。窗口外和缺字段会单列，未知指标不计为零。</p>'+(!S.decisions.length?box("等待自己的作品",empty("在「数据接入」导入真实快照后，这里会列出每条作品的依据和下一步。")):S.decisions.map(d=>box(d.title,tag(d.series)+tag(d.traffic)+tag(d.window)+tag(d.label,"warn")+'<p>'+(d.trend?"同源相邻观察间增加 "+esc(d.trend.delta)+" 次播放，跨度 "+esc(d.trend.hours)+" 小时。 ":"")+esc(d.evidence)+'</p><b>'+esc(d.action)+'</b><p class="sub">采用快照 '+esc(d.observed.slice(0,16))+' · 最近采集 '+esc(d.latest_observed.slice(0,16))+' · '+esc(d.origin)+'</p>'+tbl(["指标","本篇","历史中位数","对照作品数"],d.signals.map(s=>[s.name,s.value,s.n>=3?s.base:"待积累",s.n]))+fold("最新原始指标",tbl(["指标","值"],Object.entries(d.latest).map(([k,v])=>[({"plays":"播放","likes":"赞","comments":"评论","shares":"分享","saves":"收藏","follows":"新增关注","completion":"完播率","retention5":"5秒留存率"})[k],v==null?"未提供":(["completion","retention5"].includes(k)?(100*v).toFixed(1)+"%":v)])) ))).join(""));
 }
 function radar(){
  const addPeer=form("peers",input("url","抖音作品或主页完整链接","","url")+input("author","作者（同名可用主页链接作标识）","", "text",false)+input("title","作品标题或主页名称")+input("keyword","匹配主题","", "text",false)+area("summary","观察摘要","",false),"存入雷达");
@@ -48,9 +142,12 @@ function settings(){
  box("联网来源",Object.entries(S.sources).map(([k,v])=>'<div class="item">'+tag(v?"已配置":"未配置",v?"":"warn")+' '+esc(k)+'</div>').join("")+'<small>有资格的应用可接官方搜索和经营授权统计。公开网页索引有收录延迟。密钥只通过环境变量传入。接入步骤见 README。</small>')+box("连接记录",S.clocks.length?tbl(["来源","下次运行（北京时间）","连续异常"],S.clocks.map(x=>[x.name,x.next_time.slice(0,19),x.failures])):empty("尚未运行联网来源。"));
 }
 function draw(){
- $("mode").textContent=(S.demo?"演示 · ":"")+(S.static?"离线快照":"本地工作台");$("fresh").textContent=S.now.slice(0,16).replace("T"," ")+" 北京时间";
- $("date").textContent=S.profile.name+" / "+S.now.slice(0,10);$("account").innerHTML="<strong>"+esc(S.profile.name)+"</strong>"+esc(S.profile.audience);
- $("title").textContent=page;$("nav").innerHTML=tabs.map(t=>'<button data-tab="'+esc(t)+'" class="'+(page===t?"active":"")+'">'+esc(t)+'</button>').join("");
+ $("mode").textContent=(S.demo?"演示 · ":"")+(S.static?"离线快照":"本地工作台");
+ $("fresh").textContent="数据读取于 "+S.now.slice(0,16).replace("T"," ")+" 北京时间";
+ $("date").textContent=S.now.slice(0,10).replaceAll("-"," / ");
+ $("account").textContent=S.profile.name;
+ $("title").textContent=page;
+ $("nav").innerHTML=tabs.map((t,i)=>'<button type="button" data-tab="'+t+'" aria-label="'+t+'" title="'+t+'"'+(page===t?' aria-current="page"':'')+'>'+icon(tabIcons[i],20)+'<span>'+t+'</span></button>').join("");
  $("view").innerHTML=[today,diagnostics,radar,calendar,comments,experiments,playbook,settings][tabs.indexOf(page)]();
  $("sync").hidden=S.static;
 }
@@ -58,9 +155,29 @@ function notice(s){$("notice").hidden=false;$("notice").textContent=s}
 async function reloadState(){let r=await fetch("/api/state",{cache:"no-store"});if(!r.ok)throw Error("读取失败");S=await r.json();draw()}
 async function submit(b){let r=await fetch("/api/action",{method:"POST",headers:{"Content-Type":"application/json","X-Operator-Request":"1"},body:JSON.stringify(b)});let result=await r.json();if(!r.ok)throw Error(result.error||"保存失败");await reloadState();notice(result.message)}
 document.addEventListener("submit",async e=>{e.preventDefault();const f=e.target;const btn=f.querySelector("button");btn.disabled=true;try{await submit({...Object.fromEntries(new FormData(f)),command:f.dataset.op})}catch(x){notice(x.message)}finally{btn.disabled=false}});
-$("nav").addEventListener("click",e=>{const b=e.target.closest("button");if(b){page=b.dataset.tab;history.replaceState(null,"","#"+encodeURIComponent(page));draw()}});
+document.addEventListener("click",e=>{
+ const dial=e.target.closest("button[data-dial]");
+ if(dial){
+   const kind=page==="今日工作"?"home":"diag";
+   viewChoice[kind]=dial.dataset.dial;
+   $("view").querySelector(".dashboard").outerHTML=dashboard(kind);
+   $("view").querySelector('[data-dial="'+viewChoice[kind]+'"]').focus({preventScroll:true});
+   return;
+ }
+ const button=e.target.closest("button[data-tab]");
+ if(button && tabs.includes(button.dataset.tab) && page!==button.dataset.tab){
+   page=button.dataset.tab;
+   history.replaceState(null,"","#"+encodeURIComponent(page));
+   draw();
+   window.scrollTo(0,0);
+   $("title").focus({preventScroll:true});
+ }
+});
 document.addEventListener("change",async e=>{if(e.target.id==="csvfile"&&e.target.files[0]){const f=e.target.files[0];if(f.size>3_800_000){notice("文件过大，请使用 inbox 文件夹。");return}e.target.closest("form").elements.csv.value=await f.text()}});
 $("sync").onclick=async()=>{$("sync").disabled=true;try{await submit({command:"sync"})}catch(e){notice(e.message)}finally{$("sync").disabled=false}};
 $("print").onclick=()=>window.print();
+$("sync").innerHTML=icon("sync",16)+"<span>立即检查</span>";
+$("print").innerHTML=icon("print",17);
+$("title").setAttribute("tabindex","-1");
 draw();if(!S.static)setInterval(()=>{if(!document.hidden&&!document.querySelector("details[open]")&&!["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))reloadState().catch(()=>notice("工作台连接中断，已保留当前画面。"))},30000);
 
