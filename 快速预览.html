@@ -1,15 +1,218 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>抖音运营工作台</title><style>:root{--ink:#142922;--muted:#576c61;--line:#cfdbcf;--paper:#f3f5ee;--card:#fffefa;--green:#155d49;--mint:#caf1bc;--amber:#f4dc99;color-scheme:light}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 "DM Sans","PingFang SC","Microsoft YaHei",sans-serif}header{height:66px;background:#132e27;color:#f6faef;display:flex;align-items:center;gap:14px;padding:0 30px;border-bottom:3px solid #96c69a}header b{font-size:19px;font-weight:650;letter-spacing:.04em}header time{margin-left:auto;color:#c2d4c7;font-size:12px}.logo{display:flex;align-items:flex-end;gap:3px;height:25px}.logo i{width:5px;background:var(--mint);transform:skew(-11deg)}.logo i:nth-child(1){height:10px}.logo i:nth-child(2){height:17px}.logo i:nth-child(3){height:24px}#mode{background:#365145;padding:2px 8px;font-size:12px;border-radius:4px}
-.shell{display:grid;grid-template-columns:196px minmax(0,1fr);min-height:calc(100vh - 66px)}aside{background:#eaf0e7;border-right:1px solid var(--line);padding:27px 15px;display:flex;flex-direction:column;gap:40px}nav{display:grid;gap:5px}nav button{text-align:left;background:transparent;color:var(--muted);border:0;padding:10px 15px;border-radius:6px;font-weight:550}nav button.active{color:#fff;background:var(--green)}.account{margin-top:auto;border-top:1px solid var(--line);padding:18px 10px;color:var(--muted);font-size:12px}.account strong{display:block;color:var(--ink);font-size:16px}main{padding:36px clamp(16px,4vw,58px) 70px;max-width:1480px;width:100%;min-width:0}.heading,.row,.controls{display:flex;align-items:center;justify-content:space-between;gap:10px}.controls{justify-content:flex-start;flex-wrap:wrap}.eyebrow,small{font-size:12px;color:var(--muted)}.eyebrow{letter-spacing:.08em}h1{font-size:clamp(28px,4vw,43px);font-weight:650;letter-spacing:-.04em;line-height:1.25;margin:6px 0 18px}h2{font-size:20px;margin:0 0 13px}h3{font-size:16px;margin:0 0 5px}p{margin:6px 0 10px}.grid,.cards,.stats{display:grid;gap:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr))}.stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:22px}.card,.box,details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:19px;overflow-wrap:anywhere}.box{margin:14px 0}.stat strong{display:block;font-size:34px;line-height:1.3;font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:530}.stat:first-child{background:#193f32;color:#ecf8da}.stat:first-child small{color:#c2d5c5}.tag{display:inline-block;background:#e5efdf;color:#214d35;border-radius:3px;font-size:12px;line-height:1.5;padding:2px 7px;margin:0 4px 5px 0}.warn{background:var(--amber);color:#62471a}.stack>*+*{margin-top:12px}.item{padding:13px 0;border-top:1px solid var(--line)}.item:first-child{border:0}.sub{color:var(--muted);font-size:13px}.note,pre{white-space:pre-wrap}button,.button{background:var(--green);color:white;border:1px solid var(--green);border-radius:6px;padding:7px 13px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}button:hover,.button:hover{filter:brightness(.94)}button:focus-visible,a:focus-visible{outline:3px solid #c78120;outline-offset:2px}button.alt,#print{color:var(--green);background:transparent;border-color:var(--line)}button:disabled{opacity:.5;cursor:default}a{color:var(--green);text-underline-offset:3px}summary{cursor:pointer;font-weight:600}details{margin:10px 0}details[open]>summary{margin-bottom:12px}label{display:grid;gap:3px;color:var(--muted);font-size:12px}input,select,textarea{font:inherit;font-size:15px;border:1px solid #b6c7b8;border-radius:5px;background:#fff;color:var(--ink);width:100%;padding:8px 10px}textarea{min-height:70px}form{display:grid;gap:10px}form button{justify-self:start}.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}td,th{text-align:left;border-bottom:1px solid var(--line);padding:7px;vertical-align:top}th{color:var(--muted)}#notice{position:sticky;top:5px;z-index:3;background:#17392d;color:#fff;border-radius:5px;padding:10px 16px}.empty{color:var(--muted);padding:10px 0}.bar{height:5px;background:#e0e8de;border-radius:3px;margin:8px 0}.bar i{display:block;background:#408259;height:100%;border-radius:3px}.hgap{margin-top:24px}
-@media(max-width:800px){.shell{display:block}aside{padding:8px 12px;border-right:0;border-bottom:1px solid var(--line)}nav{display:flex;overflow:auto}nav button{white-space:nowrap}.account{display:none}main{padding:20px 14px 50px}.grid{grid-template-columns:1fr}header{padding:0 14px}header time{display:none}}@media(max-width:540px){.heading{align-items:flex-start;flex-direction:column;margin-bottom:12px}.stats{gap:6px}.stats .card{padding:10px}.stat strong{font-size:24px}header{gap:8px}header b{font-size:17px}.card,.box,details{padding:13px}}
-@media print{header,aside,button,form,.controls,#notice{display:none!important}.shell,main{display:block;padding:0}.card,.box,details{break-inside:avoid}.grid,.cards{display:block}.card{margin-bottom:8px}body{background:white}}
-
-</style></head>
-<body><header><div class="logo" aria-label="运营工作台标志"><i></i><i></i><i></i></div><b>抖音运营工作台</b><span id="mode"></span><time id="fresh"></time></header>
-<div class="shell"><aside><nav id="nav" aria-label="工作区导航"></nav><div class="account" id="account"></div></aside>
-<main><div id="notice" role="status" hidden></div><div class="heading"><div><div class="eyebrow" id="date"></div><h1 id="title"></h1></div><div class="controls"><button id="sync">立即检查</button><button id="print">打印 / PDF</button></div></div>
-<section id="view"></section></main></div><script type="application/json" id="state">{"profile": {"name": "生活科普编辑部", "audience": "对生活细节好奇的上班族", "keywords": ["生活科普", "日常物件原理", "职场生活", "科学实验"], "promise": "用三分钟讲清一个身边的问题", "weekly_capacity": 3}, "decisions": [{"work": "demo-5", "title": "演示 · 纸袋提手的折角", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-25T14:00:00+08:00", "latest_observed": "2026-11-25T14:00:00+08:00", "published": "2026-11-24T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1400, "likes": 52, "comments": 5, "shares": 6, "saves": 12, "follows": 4, "completion": 0.14, "retention5": 0.3}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "30.0%", "base": "52.5%", "n": 4, "ratio": 0.5714285714285714}, {"key": "completion", "name": "完播率", "value": "14.0%", "base": "23.5%", "n": 4, "ratio": 0.5957446808510639}, {"key": "conversion", "name": "每千播放新增关注", "value": "2.9‰", "base": "6.1‰", "n": 4, "ratio": 0.47016274864376134}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.9‰", "base": "12.3‰", "n": 4, "ratio": 1.0420743639921723}, {"key": "plays", "name": "播放量", "value": "1400.0次", "base": "1460.0次", "n": 4, "ratio": 0.958904109589041}], "label": "检查开头", "action": "把关键动作或问题放进第一句话，其他镜头保持一致。", "evidence": "5秒留存率 30.0%，历史中位数 52.5%，4 条对照。"}, {"work": "demo-4", "title": "演示 · 杯壁上的水滴", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-24T14:00:00+08:00", "latest_observed": "2026-11-24T14:00:00+08:00", "published": "2026-11-23T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1800, "likes": 49, "comments": 5, "shares": 6, "saves": 12, "follows": 12, "completion": 0.25, "retention5": 0.53}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "53.0%", "base": "52.0%", "n": 3, "ratio": 1.0192307692307692}, {"key": "completion", "name": "完播率", "value": "25.0%", "base": "23.0%", "n": 3, "ratio": 1.0869565217391304}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.7‰", "base": "6.0‰", "n": 3, "ratio": 1.1111111111111112}, {"key": "depth", "name": "每千播放收藏与分享", "value": "10.0‰", "base": "12.7‰", "n": 3, "ratio": 0.7888888888888889}, {"key": "plays", "name": "播放量", "value": "1800.0次", "base": "1420.0次", "n": 3, "ratio": 1.267605633802817}], "label": "检查可复用价值", "action": "把观众可以照做的步骤，变成一次可见的演示。", "evidence": "每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"}, {"work": "demo-3", "title": "演示 · 盒盖的卡扣", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-23T14:00:00+08:00", "latest_observed": "2026-11-23T14:00:00+08:00", "published": "2026-11-22T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1420, "likes": 46, "comments": 5, "shares": 6, "saves": 12, "follows": 8, "completion": 0.22, "retention5": 0.54}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "54.0%", "base": "缺数据", "n": 2, "ratio": null}, {"key": "completion", "name": "完播率", "value": "22.0%", "base": "缺数据", "n": 2, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "5.6‰", "base": "缺数据", "n": 2, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.7‰", "base": "缺数据", "n": 2, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1420.0次", "base": "缺数据", "n": 2, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}, {"work": "demo-2", "title": "演示 · 车窗的倒影", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-22T14:00:00+08:00", "latest_observed": "2026-11-22T14:00:00+08:00", "published": "2026-11-21T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1500, "likes": 43, "comments": 5, "shares": 6, "saves": 12, "follows": 9, "completion": 0.24, "retention5": 0.5}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "50.0%", "base": "缺数据", "n": 1, "ratio": null}, {"key": "completion", "name": "完播率", "value": "24.0%", "base": "缺数据", "n": 1, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.0‰", "base": "缺数据", "n": 1, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.0‰", "base": "缺数据", "n": 1, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1500.0次", "base": "缺数据", "n": 1, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}, {"work": "demo-1", "title": "演示 · 雨伞上的水珠", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-21T14:00:00+08:00", "latest_observed": "2026-11-21T14:00:00+08:00", "published": "2026-11-20T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1300, "likes": 40, "comments": 5, "shares": 6, "saves": 12, "follows": 8, "completion": 0.23, "retention5": 0.52}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "52.0%", "base": "缺数据", "n": 0, "ratio": null}, {"key": "completion", "name": "完播率", "value": "23.0%", "base": "缺数据", "n": 0, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.2‰", "base": "缺数据", "n": 0, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "13.8‰", "base": "缺数据", "n": 0, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1300.0次", "base": "缺数据", "n": 0, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}], "peers": [{"author": "这不科学啊", "works": 2, "items": [{"url": "https://www.douyin.com/video/7494578413089459493", "author": "这不科学啊", "title": "把课本里的覆杯实验放大", "summary": "公开标题把常见课堂实验和尺度变化放在一起，评论区可见作者回应实验条件。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "科学实验", "published": null, "likes": null, "notes": [{"id": 1, "url": "https://www.douyin.com/video/7494578413089459493", "aspect": "标题", "cue": "作品页标题", "evidence": "标题把一个熟悉的覆杯实验与放大尺度并列，给观众留下结果疑问。", "pattern": "反差", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["科学实验"]}, {"url": "https://www.douyin.com/video/7240019719858752823", "author": "这不科学啊", "title": "没有拉环等三个日常难题", "summary": "公开标题连续设置三个具体物件的使用障碍，再提问人物怎么处理。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "日常物件原理", "published": null, "likes": null, "notes": [{"id": 2, "url": "https://www.douyin.com/video/7240019719858752823", "aspect": "标题", "cue": "作品页标题", "evidence": "标题先列举三个动作受阻的场景，再问人物如何应对。", "pattern": "提问", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["日常物件原理"]}], "terms": ["日常物件原理", "科学实验"], "reviewed": 2, "patterns": [], "score": 10, "grade": "补看第二条作品", "key": "这不科学啊"}, {"author": "佑来了生活科学", "works": 1, "items": [{"url": "https://www.douyin.com/video/7063364154911935774", "author": "佑来了生活科学", "title": "圆筒中的物质与转动现象", "summary": "公开作品标题围绕圆筒里的未知物质提出问题，并标出分集序号。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "生活科普", "published": null, "likes": null, "notes": [{"id": 3, "url": "https://www.douyin.com/video/7063364154911935774", "aspect": "标题", "cue": "作品页标题", "evidence": "标题把待解释的对象缩小到圆筒，并把答案留给观众猜测。", "pattern": "提问", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["生活科普"]}], "terms": ["生活科普"], "reviewed": 1, "patterns": [], "score": 5, "grade": "补看第二条作品", "key": "佑来了生活科学"}], "plans": [{"id": 1, "title": "演示 · 同一杯冰水，换个杯子为什么没有水珠？", "due": "2026-11-27", "stage": "选题", "brief": "受众：对生活细节好奇的上班族\n本期要解决：演示 · 同一杯冰水，换个杯子为什么没有水珠？\n栏目承诺：用三分钟讲清一个身边的问题\n参考作品：这不科学啊 · https://www.douyin.com/video/7494578413089459493\n可借鉴手法：反差（作品页标题，标题把一个熟悉的覆杯实验与放大尺度并列，给观众留下结果疑问。）\n原创迁移实验：先展示同一件事的两个不同结果，再回到唯一改变的条件。\n首镜并排两只杯子，请观众先猜。保持水温与机位，核对环境湿度，只测试第一镜；观察 24 小时的 5 秒留存率。", "work": "", "updated": "2026-11-27T14:13:10+08:00"}], "comments": [{"id": 1, "content": "演示留言：为什么玻璃杯外有水，保温杯外却很干？", "work": "demo-4", "kind": "选题需求", "created": "2026-11-27T14:13:10+08:00", "status": "待处理", "reply": ""}], "experiments": [{"id": 1, "hypothesis": "演示 · 开场先给对照组可以改善观看留存", "variable": "首镜显示两只杯子", "work": "demo-next", "metric": "retention5", "window": "24h", "baseline": 0.52, "goal": 0.5720000000000001, "controls": "{\"series\": \"生活科普\", \"traffic\": \"自然\", \"works\": [\"demo-5\", \"demo-4\", \"demo-3\", \"demo-2\", \"demo-1\"], \"latest_control\": \"2026-11-25T14:00:00+08:00\"}", "created": "2026-11-27T14:13:10+08:00", "status": "等待目标窗口", "result": "缺数据", "base_label": "52.0%", "goal_label": "57.2%", "controls_n": 5}], "today": [{"kind": "数据", "title": "补录最新观察", "detail": "最近数据采于 2026-11-25T14:00，先更新再调整排期。"}, {"kind": "排期", "title": "1 条内容到期", "detail": "演示 · 同一杯冰水，换个杯子为什么没有水珠？ · 选题"}, {"kind": "诊断", "title": "检查开头", "detail": "演示 · 纸袋提手的折角 · 5秒留存率 30.0%，历史中位数 52.5%，4 条对照。把关键动作或问题放进第一句话，其他镜头保持一致。"}, {"kind": "互动", "title": "1 条待处理反馈", "detail": "选题需求 · 演示留言：为什么玻璃杯外有水，保温杯外却很干？"}, {"kind": "对标", "title": "这不科学啊 · 补看第二条作品", "detail": "已归档 2 条作品，按样本证据安排下一次观察。"}, {"kind": "选题", "title": "补充未来七天排期", "detail": "计划 3 条，已安排 1 条。"}], "forecast": 1, "weekly": {"days": 7, "works": 4, "plans": 1, "series": {"生活科普": 4}, "signals": ["演示 · 纸袋提手的折角 · 检查开头。5秒留存率 30.0%，历史中位数 52.5%，4 条对照。", "演示 · 杯壁上的水滴 · 检查可复用价值。每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"], "insufficient": 2, "note": "按发布时间统计作品；详细指标按作品观察窗口比较。"}, "monthly": {"days": 30, "works": 5, "plans": 1, "series": {"生活科普": 5}, "signals": ["演示 · 纸袋提手的折角 · 检查开头。5秒留存率 30.0%，历史中位数 52.5%，4 条对照。", "演示 · 杯壁上的水滴 · 检查可复用价值。每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"], "insufficient": 3, "note": "按发布时间统计作品；详细指标按作品观察窗口比较。"}, "count": 5, "snapshot_count": 5, "last_observed": "2026-11-25T14:00:00+08:00", "now": "2026-11-27T14:14:00+08:00", "sources": {"官方作品统计": false, "官方搜索": false, "公开网页索引": false}, "clocks": [], "events": [{"id": 4, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "锁定对照与实验目标"}, {"id": 3, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "新增原创排期"}, {"id": 2, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "登记评论"}, {"id": 1, "created": "2026-11-27T14:13:10+08:00", "kind": "数据", "message": "合成演示 · 导入 5 条观察"}], "routines": [["策略与定位", "每月", "从近期作品和访谈中找到同一组人的重复问题。写清谁看、为什么关注、怎样证明。", "一条账号承诺、三个内容栏目与每周产能。", "在设置中修改定位，下周检查是否能覆盖评论里的真实需求。"], ["账号晨检", "每天", "核对最新快照的采集时点、流量来源、异常评论和到期排期。先区分数据滞后与作品表现。", "列出今天最影响目标的一项工作和证据。", "在今日工作中打开对应作品或排期。"], ["需求与舆情", "每天", "合并重复提问，区分新选题、事实纠错、商务线索与一般反馈。民生议题核对原始消息与日期。", "每条问题保留原话、来源作品和处理记录。", "在互动台登记原话，选一条转原创选题。"], ["同行选样", "每周", "同受众选直接同行，同形式选表达参考，保留普通作品作对照。核对作者主页，防止同名误合并。", "同作者至少两条作品、来源和入选理由。", "在同行雷达打开原作，保存作品链接、作者与匹配词。"], ["观看与拆解", "逐条", "第一遍只看体验。第二遍记录开头、承诺、证据出现、节奏转换、结尾和评论。只看标题时只写标题观察。", "每个判断附时间点、标题位置或具体评论，区分观察和推断。", "在作品卡片添加手法与证据，检查同作者不同作品是否重复。"], ["选题与脚本", "每次制作", "把用户问题和同行的方法放入自己的场景。明确一个问题、一次可见动作、一个可靠来源、一次结论回扣。", "一页原创简报，指定镜头证据、受众、搜索词及主指标。", "将同行样本或观众提问生成原创排期。"], ["制作与质检", "发布前", "按手机实际尺寸试看。对本账号核对首屏标题和副标题、人物动作、口型、关键音效、字幕层级及数据来源。", "通过核查的成片、可读封面和需要返修的镜头清单。", "把修改记入简报，完成后将制作阶段改为待发布。"], ["发布与分发", "发布日", "核对话题与正文是否回答同一搜索意图，检查合集、封面裁切、素材授权和当前平台标识要求。", "记录实际发布链接、发布时间和是否投流。", "从排期打开创作者中心，发布后填作品 ID。"], ["社区与事实纠错", "发布后", "先核验事实质疑，再回复高质量问题。把需公开更正的内容与下一期可讲的问题分开。", "回复草稿、处理结果与可跟进选题。", "在互动台记录，实际回复后标注处理结果。"], ["分析与实验", "2h / 24h / 72h / 7d", "同观察年龄、同系列及同流量类型比较。先定位开头流失、中段流失、收藏分享或关注转化，再只改变一项。", "锁定历史基线、目标提升和单一变量。", "在实验页创建，再导入到期作品快照。"], ["投流与商业", "有推广计划时", "先写目标、预算上限、归因窗口和停止条件，把付费与自然流量分开。商务内容单独归档客户要求和素材权利。", "投前假设与投后记录。缺成交或归因数据时保留未知。", "使用付费或混合分组，实际预算与投放由账号主人处理。"], ["周会与月度调整", "周 / 月", "周会回看样本与制作产能，月度审视栏目、受众、重复手法和商业目标。一次信号至少再做一次可比实验。", "列出保留、停止、下轮测试与负责人。", "导出复盘，依据实验结论调整下一轮选题和关键词。"]], "static": true, "demo": true}</script><script>"use strict";
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>抖音运营工作台</title>
+  <style>:root {
+  color-scheme: light;
+  --ink:#272a30;
+  --muted:#626872;
+  --quiet:#747b84;
+  --line:#dde0e5;
+  --paper:#f3f4f7;
+  --orange:#ed741f;
+  --burnt:#a94b0e;
+  --surface:#fbfbfc;
+  --relief: 4px 5px 12px #272f4010, -4px -4px 10px #ffffffec;
+  font: 15px/1.55 "Inter",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--ink);
+  background:#e9eaec;
+}
+* { box-sizing:border-box }
+body { margin:0; min-width:300px }
+button,input,select,textarea { font:inherit }
+button,a,input,textarea,select,summary { -webkit-tap-highlight-color:transparent }
+button { cursor:pointer }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible { outline:2px solid #af500c; outline-offset:4px }
+button:disabled { opacity:.55; cursor:wait }
+button,.button { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 14px; border:1px solid var(--line); border-radius:12px; color:var(--ink); background:linear-gradient(145deg,#fff,#f0f1f3); box-shadow:2px 3px 6px #28313e11,-2px -2px 5px white; text-decoration:none; font-size:13px }
+button:hover { border-color:#b5b9c0 }
+button:active { box-shadow:inset 2px 2px 4px #252b3814 }
+[hidden] { display:none!important }
+a { color:var(--burnt); text-underline-offset:3px }
+.icon { display:inline-block; flex-shrink:0; vertical-align:middle }
+.chassis { max-width:1780px; min-height:calc(100vh - 28px); margin:14px auto; width:calc(100% - 28px); border:1px solid rgba(255,255,255,.85); border-radius:30px; background:var(--paper); box-shadow:0 7px 24px #333c4c14,inset 0 1px 0 white }
+.topbar { height:64px; display:grid; position:relative; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:0 30px; isolation:isolate }
+.topbar:after { content:""; height:1px; background:linear-gradient(90deg,transparent,var(--line) 9%,var(--line) 91%,transparent); position:absolute; bottom:0; right:20px; left:20px }
+.brand,.connection,.panel-title,.tools,.segments,.data-link,.plot-info,.row,.controls { display:flex; align-items:center }
+.brand { gap:12px; font-weight:600; font-size:13px; color:#51565e; min-width:0 }
+#account { overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+.brand-mark { width:34px; height:34px; flex-shrink:0; border:1px solid #d8dce0; border-radius:12px; background:linear-gradient(145deg,#fff,#eceef1); box-shadow:var(--relief); display:grid; place-items:center; position:relative }
+.brand-mark:before { content:""; width:15px; height:15px; border:3px solid #353941; border-right-color:var(--orange); border-radius:50%; transform:rotate(-36deg) }
+.brand-mark:after { content:""; position:absolute; width:4px; height:4px; border-radius:50%; background:var(--orange) }
+.nameplate { height:42px; align-self:start; position:relative; padding:9px 30px 10px 34px; border-radius:0 0 27px 27px; background:linear-gradient(#fff,#fbfbfc); color:#373c44; font-weight:650; font-size:16px; letter-spacing:.28em; box-shadow:0 7px 10px -10px #242a33 }
+.nameplate:before,.nameplate:after { content:""; position:absolute; top:0; width:20px; height:20px }
+.nameplate:before { left:-19px; background:radial-gradient(circle at 0 100%,transparent 19px,#fff 20px) }
+.nameplate:after { right:-19px; background:radial-gradient(circle at 100% 100%,transparent 19px,#fff 20px) }
+.connection { justify-self:end; gap:8px; color:var(--muted); font-size:12px; font-weight:550 }
+.status-dot { width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 4px #ed741f16 }
+.shell { display:grid; grid-template-columns:74px minmax(0,1fr); gap:26px; padding:20px 30px 26px 18px; align-items:start }
+aside { position:sticky; top:16px; padding-top:3px }
+nav { display:grid; gap:5px; padding:8px 6px; background:linear-gradient(110deg,#fafbfc,#f1f2f5); border-radius:28px; border:1px solid #fff; box-shadow:var(--relief) }
+nav button { position:relative; display:grid; justify-items:center; align-content:center; gap:5px; width:100%; min-height:60px; border-radius:18px; border:1px solid transparent; color:#616873; background:transparent; box-shadow:none; padding:5px 2px }
+nav button span { font-size:10px; line-height:1.2; font-weight:560; white-space:nowrap }
+nav button:hover { background:#fff; border-color:transparent }
+nav button[aria-current] { color:var(--burnt); background:linear-gradient(145deg,#fff,#fff7ef); border-color:#fff; box-shadow:2px 4px 9px #50382019,-2px -2px 7px white }
+nav button[aria-current]:before { content:""; width:3px; height:16px; border-radius:4px; background:var(--orange); position:absolute; left:-5px; top:50%; transform:translateY(-50%) }
+nav button[aria-current] .icon { color:var(--orange) }
+main { min-width:0; width:100%; max-width:1500px; margin:0 auto }
+.heading { display:flex; justify-content:space-between; align-items:center; margin:4px 0 20px; gap:12px }
+.eyebrow { color:var(--muted); font:550 11px/1.3 ui-monospace,"SFMono-Regular",monospace; letter-spacing:.1em }
+h1,h2,h3,p { margin:0 }
+h1 { font-size:clamp(27px,2.6vw,38px); line-height:1.17; letter-spacing:-.035em; font-weight:630; margin:5px 0 0 }
+h1:focus { outline:0 }
+h2 { font-size:17px; line-height:1.4; font-weight:620 }
+h3 { font-size:15px; font-weight:600; line-height:1.5 }
+p { margin:5px 0 9px }
+small,.sub,.empty { color:var(--muted) }
+small { font-size:12px }
+.sub,.empty { font-size:13px }
+.controls { gap:10px; flex-wrap:wrap }
+.tools { gap:8px }
+.tools button { height:38px; border-radius:20px }
+#sync { background:#282d33; border:1px solid #282d33; color:#fff; padding:0 15px }
+#sync:hover { background:#41464d }
+#print { width:38px; padding:0; border-color:#fff }
+.dashboard,.overview-grid,.grid,.cards { display:grid; gap:18px; align-items:stretch }
+.dashboard,.overview-grid { grid-template-columns:minmax(0,1.83fr) minmax(265px,1fr) }
+.surface,.instrument,.box,.card { border-radius:22px; border:1px solid #fff; background:var(--surface); box-shadow:var(--relief); min-width:0; overflow-wrap:anywhere }
+.instrument { position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:20px 23px 19px; background:radial-gradient(ellipse at 58% 42%,#fafbfd 0,#f3f4f7 54%,#f4f5f8 85%) }
+.instrument-head { display:flex; align-items:center; justify-content:space-between; z-index:1 }
+.panel-title { gap:8px; color:var(--ink) }
+.panel-title .icon { color:#676d77 }
+.panel-title h2 { font-size:15px; letter-spacing:.025em }
+.instrument-sub,.plot-info,.axis,.dial-caption { color:var(--muted); font-size:11px }
+.instrument-sub { border:1px solid #dde0e5; border-radius:20px; padding:3px 10px; background:#f6f7f8 }
+.instrument-body { position:relative; display:grid; flex:1; grid-template-columns:minmax(80px,.62fr) minmax(205px,2.15fr) minmax(0,.25fr); align-items:center; padding:8px 0 0 }
+.readouts { display:grid; gap:16px; z-index:1; align-self:center }
+.readouts .readout { padding-left:10px; border-left:2px solid #c8ccd1 }
+.readouts .readout:first-child { border-color:var(--orange) }
+.readout { display:grid; gap:4px; min-width:0 }
+.readout>span { font-size:12px; color:var(--muted) }
+.readout strong { color:#31353c; font-size:clamp(19px,2vw,26px); font-weight:550; line-height:1.2; font-variant-numeric:tabular-nums }
+.readout strong small { margin-left:4px; font-size:11px; font-weight:400 }
+.meter-assembly { justify-self:center; position:relative; width:min(100%,280px); aspect-ratio:1; display:grid; place-items:center }
+.outer-orbit,.outer-orbit:before,.outer-orbit:after { position:absolute; border-radius:50%; pointer-events:none }
+.outer-orbit { inset:-1%; border:1px solid #dfe2e6; box-shadow:inset 1px 1px 2px #ffffffca,1px 1px 2px white }
+.outer-orbit:before { content:""; inset:8%; border:1px solid #dfe2e7 }
+.outer-orbit:after { content:""; inset:-9%; border:1px solid #e8eaee }
+.meter { --sweep:0deg; position:relative; width:77%; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; background:linear-gradient(140deg,#fff,#eff0f3 68%,#f7f8fa); border:1px solid #fff; box-shadow:6px 9px 13px #59637424,-5px -5px 10px #fff,0 1px 2px #89929d28 }
+.dial-track,.ticks { border-radius:50%; position:absolute }
+.dial-track { inset:4.5%; background:conic-gradient(from 225deg,#ed741f 0 var(--sweep),#cfd4db var(--sweep) 270deg,transparent 270deg); mask:radial-gradient(closest-side,transparent calc(100% - 4px),#000 calc(100% - 3px)); -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 4px),#000 calc(100% - 3px)) }
+.ticks { inset:11%; background:repeating-conic-gradient(from 0deg,#a5abb4 0deg 1deg,transparent 1deg 6deg); mask:radial-gradient(closest-side,transparent 94%,#000 95%); -webkit-mask:radial-gradient(closest-side,transparent 94%,#000 95%) }
+.knob { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; width:65%; height:65%; border:1px solid #fff; border-radius:50%; background:linear-gradient(145deg,#fff 8%,#f8f9fb 45%,#e9ebee 90%); box-shadow:4px 6px 9px #555e6c27,-4px -4px 8px #fff,inset -2px -2px 4px #fff }
+.knob strong { font:430 clamp(29px,3.4vw,50px)/1.07 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-variant-numeric:tabular-nums; letter-spacing:-.065em; color:#31363d; margin-top:8px }
+.knob small { font-size:.43em; color:#5a606a; margin-left:2px }
+.knob span { font-size:11px; color:#59616b }
+.indicator { position:absolute; top:12%; width:4px; height:9px; border-radius:4px; background:var(--orange); box-shadow:0 1px 3px #c96a2b52 }
+.orb { position:absolute; width:35px; height:35px; padding:0; border-radius:50%; background:linear-gradient(145deg,white,#f1f2f5); border-color:#fff; box-shadow:3px 4px 8px #414c5a23,-3px -3px 7px white; color:#626974 }
+.orb-a { top:14%; left:3%; background:linear-gradient(145deg,#ff9b53,#ef701c); color:#402110; border-color:#ffae71 }
+.orb-b { right:0; bottom:18% }
+.dial-caption { text-align:center; z-index:1; margin:5px 0 10px; overflow-wrap:anywhere }
+.segments { position:relative; z-index:1; align-self:center; padding:3px; gap:3px; border-radius:20px; background:#e9ebef; box-shadow:inset 1px 2px 4px #414a5917,inset -1px -1px 3px #fff }
+.segments button { border:0; padding:4px 15px; min-height:27px; color:var(--muted); background:transparent; box-shadow:none; border-radius:20px; font-size:12px }
+.segments button[aria-pressed=true] { background:linear-gradient(#fff,#fafafa); color:var(--burnt); box-shadow:1px 2px 5px #353e4d20 }
+.side-panels { display:grid; gap:16px; grid-template-rows:1.02fr 1fr; min-width:0 }
+.surface,.box,.card { padding:20px 22px }
+.surface { display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(155deg,#fdfdfd,#f6f7f9) }
+.plot-info { margin-top:12px; justify-content:space-between; gap:10px }
+.plot-info span { display:flex; align-items:center; gap:5px }
+.plot-info i { width:12px; height:3px; background:var(--orange); border-radius:3px }
+.chart { position:relative; min-width:0; margin-top:3px }
+.chart svg { display:block; width:100%; height:77px; overflow:visible }
+.chart .gridline { fill:none; stroke:#dce0e4; stroke-width:.85; stroke-dasharray:3 4 }
+.chart .chart-line { fill:none; stroke:var(--orange); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round }
+.chart .chart-fill { fill:#ee782017 }
+.chart circle { fill:#fff; stroke:#d86c1e; stroke-width:1.7 }
+.chart-empty { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--muted); font-size:12px; padding:3px 8px; background:#f9f9fb }
+.axis { padding:0 4%; display:flex; justify-content:space-between; line-height:1; font-variant-numeric:tabular-nums }
+.data-numbers { display:grid; grid-template-columns:repeat(2,1fr); margin:13px 0 }
+.data-numbers .readout { display:flex; flex-direction:column-reverse; gap:2px }
+.data-numbers .readout+ .readout { border-left:1px solid var(--line); padding-left:20px }
+.data-numbers .readout strong { font-size:27px }
+.data-link { justify-content:flex-start; gap:8px; padding:6px 11px; align-self:stretch; background:#fff6ed; border-color:#f2dfce; box-shadow:none; color:var(--burnt); border-radius:10px; font-size:12px; font-weight:600 }
+.data-link .icon:last-child { margin-left:auto }
+.overview-grid,.grid { margin-top:17px }
+.box,.card,details { min-width:0 }
+.box { margin:16px 0 }
+.grid .box { margin:0 }
+.box>h2,.card>h3 { margin-bottom:13px }
+#view>.box:first-child { margin-top:0 }
+.grid:not(.overview-grid) { grid-template-columns:repeat(2,minmax(0,1fr)) }
+.cards { grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)) }
+.item,.queue-row { padding:12px 0; border-top:1px solid var(--line) }
+.item:first-child,.queue-row:nth-child(2) { border-top:0 }
+.queue-row { display:grid; grid-template-columns:33px 1fr 29px; align-items:center; gap:12px }
+.queue-icon,.row-go { display:grid; place-items:center; width:31px; height:31px; border-radius:10px; background:#f0f1f4; color:#606975 }
+.queue-row:nth-child(2) .queue-icon { background:#ffebdc; color:var(--burnt) }
+.queue-row small { font-size:10px }
+.queue-row h3 { font-size:14px }
+.queue-row p { color:var(--muted); font-size:12px; margin:2px 0 }
+.row-go { padding:0; width:28px; height:28px; background:white; border-radius:50%; box-shadow:none }
+.tag { display:inline-block; padding:2px 8px; border-radius:12px; background:#eef0f2; color:#535b65; font-size:12px; margin:0 5px 5px 0 }
+.warn { background:#fff0e2; color:#91430d }
+.diag-note { margin:20px 0 12px }
+.note,pre { white-space:pre-wrap }
+details { font-size:14px; border-radius:13px; border:1px solid var(--line); padding:12px 14px; background:#f7f8fa; margin:9px 0 }
+details[open]>summary { margin-bottom:12px }
+summary { cursor:pointer; font-weight:550 }
+form,label { display:grid; gap:7px }
+form { gap:12px }
+label { font-size:12px; color:var(--muted) }
+input,select,textarea { font-size:14px; width:100%; padding:9px 11px; color:var(--ink); background:#fff; border:1px solid #cdd1d7; border-radius:9px }
+textarea { min-height:76px; resize:vertical }
+form button { justify-self:start; color:#fff; background:#373b42; border-color:#373b42 }
+.table { overflow:auto; max-width:100% }
+table { width:100%; border-collapse:collapse; font-size:13px }
+td,th { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top }
+th { color:var(--muted); font-weight:550 }
+.empty { padding:10px 0 }
+#notice { position:sticky; z-index:5; top:8px; padding:10px 15px; margin-bottom:12px; color:white; background:#343940; border-radius:12px }
+footer { display:flex; align-items:center; gap:12px; margin-top:25px; color:var(--muted); font-size:11px }
+.footer-line { flex:1; height:1px; background:var(--line) }
+@media(min-width:1450px) { .meter-assembly{width:310px}.shell{gap:32px}.dashboard,.overview-grid{grid-template-columns:minmax(0,2fr) minmax(320px,1fr)} }
+@media(max-width:1100px) { .shell{gap:17px;padding:16px 20px 22px 12px;grid-template-columns:67px minmax(0,1fr)} .instrument{padding:17px}.surface,.box,.card{padding:16px}.dashboard,.overview-grid{gap:14px;grid-template-columns:minmax(0,1.65fr) minmax(235px,1fr)}.instrument-body{grid-template-columns:minmax(68px,.65fr) minmax(165px,2fr) minmax(0,.1fr)} }
+@media(max-width:820px){
+ .chassis{width:calc(100% - 12px);margin:6px auto;border-radius:21px}.topbar{height:54px;padding:0 16px}.nameplate{font-size:14px;padding:8px 15px 10px 19px;height:37px}.shell{display:block;padding:0 15px 20px}.heading{margin:16px 0}
+ aside{position:static;padding:6px 0 2px}nav{display:flex;gap:3px;border-radius:18px;padding:4px;overflow-x:auto}nav button{flex:1 0 51px;min-height:44px;gap:2px;border-radius:12px}nav button .icon{width:17px;height:17px}nav button[aria-current]:before{display:none}
+}
+@media(max-width:640px){
+ .brand{gap:6px}.brand #account{display:none}.brand-mark{width:28px;height:28px;border-radius:10px}.connection{font-size:10px;gap:5px}.status-dot{width:5px;height:5px}.topbar{padding:0 12px}.nameplate{font-size:13px;letter-spacing:.17em}
+ .dashboard,.grid,.grid:not(.overview-grid),.overview-grid{grid-template-columns:1fr}.side-panels{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:9px}.surface,.box,.card{padding:13px}.instrument{padding:15px}.meter-assembly{width:225px}.instrument-body{grid-template-columns:minmax(60px,.6fr) minmax(160px,2fr) minmax(3px,.2fr)}.instrument-sub{font-size:10px}
+ .shell{padding:0 10px 16px}.panel-title{gap:5px}.panel-title h2{font-size:13px}.plot-info{font-size:10px}.plot-info span{display:none}.data-numbers .readout+.readout{padding-left:8px}.data-numbers .readout strong{font-size:21px}.data-numbers .readout>span{font-size:10px}.data-link{font-size:11px;padding:5px}.chart svg{height:57px}.axis{font-size:9px}.data-link .icon:first-child{display:none}.tools button{height:34px}.chassis{border-radius:16px}
+}
+@media(max-width:355px) { .side-panels{grid-template-columns:1fr}.nameplate{padding-left:10px;padding-right:10px}.shell{padding-left:6px;padding-right:6px}.instrument{padding:11px} }
+@media print {
+ body,:root,.chassis{background:#fff}.chassis{width:auto;border:0;box-shadow:none;margin:0}.topbar,aside,button,form,#notice,footer,.controls{display:none!important}.shell,main{display:block;padding:0}.box,.card,.surface,.instrument{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.dashboard,.grid,.cards{display:block}.box,.card,.surface{margin:8px 0}.meter-assembly{width:180px}.dial-track,.knob,.chart{print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+  <div class="chassis">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span id="account"></span></div>
+      <div class="nameplate">抖音运营工作台</div>
+      <div class="connection"><span class="status-dot" aria-hidden="true"></span><span id="mode"></span></div>
+    </header>
+    <div class="shell">
+      <aside><nav id="nav" aria-label="工作区导航"></nav></aside>
+      <main>
+        <div id="notice" role="status" hidden></div>
+        <div class="heading">
+          <div><div class="eyebrow" id="date"></div><h1 id="title"></h1></div>
+          <div class="controls tools">
+            <button id="sync" type="button">立即检查</button>
+            <button id="print" type="button" title="打印或另存为 PDF" aria-label="打印或另存为 PDF"></button>
+          </div>
+        </div>
+        <div id="view"></div>
+        <footer><span class="footer-line"></span><time id="fresh"></time></footer>
+      </main>
+    </div>
+  </div>
+  <script type="application/json" id="state">{"profile": {"name": "生活科普编辑部", "audience": "对生活细节好奇的上班族", "keywords": ["生活科普", "日常物件原理", "职场生活", "科学实验"], "promise": "用三分钟讲清一个身边的问题", "weekly_capacity": 3}, "decisions": [{"work": "demo-5", "title": "演示 · 纸袋提手的折角", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-25T14:00:00+08:00", "latest_observed": "2026-11-25T14:00:00+08:00", "published": "2026-11-24T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1400, "likes": 52, "comments": 5, "shares": 6, "saves": 12, "follows": 4, "completion": 0.14, "retention5": 0.3}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "30.0%", "base": "52.5%", "n": 4, "ratio": 0.5714285714285714}, {"key": "completion", "name": "完播率", "value": "14.0%", "base": "23.5%", "n": 4, "ratio": 0.5957446808510639}, {"key": "conversion", "name": "每千播放新增关注", "value": "2.9‰", "base": "6.1‰", "n": 4, "ratio": 0.47016274864376134}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.9‰", "base": "12.3‰", "n": 4, "ratio": 1.0420743639921723}, {"key": "plays", "name": "播放量", "value": "1400.0次", "base": "1460.0次", "n": 4, "ratio": 0.958904109589041}], "label": "检查开头", "action": "把关键动作或问题放进第一句话，其他镜头保持一致。", "evidence": "5秒留存率 30.0%，历史中位数 52.5%，4 条对照。"}, {"work": "demo-4", "title": "演示 · 杯壁上的水滴", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-24T14:00:00+08:00", "latest_observed": "2026-11-24T14:00:00+08:00", "published": "2026-11-23T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1800, "likes": 49, "comments": 5, "shares": 6, "saves": 12, "follows": 12, "completion": 0.25, "retention5": 0.53}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "53.0%", "base": "52.0%", "n": 3, "ratio": 1.0192307692307692}, {"key": "completion", "name": "完播率", "value": "25.0%", "base": "23.0%", "n": 3, "ratio": 1.0869565217391304}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.7‰", "base": "6.0‰", "n": 3, "ratio": 1.1111111111111112}, {"key": "depth", "name": "每千播放收藏与分享", "value": "10.0‰", "base": "12.7‰", "n": 3, "ratio": 0.7888888888888889}, {"key": "plays", "name": "播放量", "value": "1800.0次", "base": "1420.0次", "n": 3, "ratio": 1.267605633802817}], "label": "检查可复用价值", "action": "把观众可以照做的步骤，变成一次可见的演示。", "evidence": "每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"}, {"work": "demo-3", "title": "演示 · 盒盖的卡扣", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-23T14:00:00+08:00", "latest_observed": "2026-11-23T14:00:00+08:00", "published": "2026-11-22T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1420, "likes": 46, "comments": 5, "shares": 6, "saves": 12, "follows": 8, "completion": 0.22, "retention5": 0.54}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "54.0%", "base": "缺数据", "n": 2, "ratio": null}, {"key": "completion", "name": "完播率", "value": "22.0%", "base": "缺数据", "n": 2, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "5.6‰", "base": "缺数据", "n": 2, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.7‰", "base": "缺数据", "n": 2, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1420.0次", "base": "缺数据", "n": 2, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}, {"work": "demo-2", "title": "演示 · 车窗的倒影", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-22T14:00:00+08:00", "latest_observed": "2026-11-22T14:00:00+08:00", "published": "2026-11-21T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1500, "likes": 43, "comments": 5, "shares": 6, "saves": 12, "follows": 9, "completion": 0.24, "retention5": 0.5}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "50.0%", "base": "缺数据", "n": 1, "ratio": null}, {"key": "completion", "name": "完播率", "value": "24.0%", "base": "缺数据", "n": 1, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.0‰", "base": "缺数据", "n": 1, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "12.0‰", "base": "缺数据", "n": 1, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1500.0次", "base": "缺数据", "n": 1, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}, {"work": "demo-1", "title": "演示 · 雨伞上的水珠", "series": "生活科普", "traffic": "自然", "window": "24h", "observed": "2026-11-21T14:00:00+08:00", "latest_observed": "2026-11-21T14:00:00+08:00", "published": "2026-11-20T14:00:00+08:00", "origin": "合成演示", "latest": {"plays": 1300, "likes": 40, "comments": 5, "shares": 6, "saves": 12, "follows": 8, "completion": 0.23, "retention5": 0.52}, "trend": null, "signals": [{"key": "retention5", "name": "5秒留存率", "value": "52.0%", "base": "缺数据", "n": 0, "ratio": null}, {"key": "completion", "name": "完播率", "value": "23.0%", "base": "缺数据", "n": 0, "ratio": null}, {"key": "conversion", "name": "每千播放新增关注", "value": "6.2‰", "base": "缺数据", "n": 0, "ratio": null}, {"key": "depth", "name": "每千播放收藏与分享", "value": "13.8‰", "base": "缺数据", "n": 0, "ratio": null}, {"key": "plays", "name": "播放量", "value": "1300.0次", "base": "缺数据", "n": 0, "ratio": null}], "label": "补齐可比样本", "action": "记录同系列、同流量类型至少三条更早作品的同窗口数据。", "evidence": "可在指标表查看样本数和观察时点。"}], "peers": [{"author": "这不科学啊", "works": 2, "items": [{"url": "https://www.douyin.com/video/7494578413089459493", "author": "这不科学啊", "title": "把课本里的覆杯实验放大", "summary": "公开标题把常见课堂实验和尺度变化放在一起，评论区可见作者回应实验条件。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "科学实验", "published": null, "likes": null, "notes": [{"id": 1, "url": "https://www.douyin.com/video/7494578413089459493", "aspect": "标题", "cue": "作品页标题", "evidence": "标题把一个熟悉的覆杯实验与放大尺度并列，给观众留下结果疑问。", "pattern": "反差", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["科学实验"]}, {"url": "https://www.douyin.com/video/7240019719858752823", "author": "这不科学啊", "title": "没有拉环等三个日常难题", "summary": "公开标题连续设置三个具体物件的使用障碍，再提问人物怎么处理。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "日常物件原理", "published": null, "likes": null, "notes": [{"id": 2, "url": "https://www.douyin.com/video/7240019719858752823", "aspect": "标题", "cue": "作品页标题", "evidence": "标题先列举三个动作受阻的场景，再问人物如何应对。", "pattern": "提问", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["日常物件原理"]}], "terms": ["日常物件原理", "科学实验"], "reviewed": 2, "patterns": [], "score": 10, "grade": "补看第二条作品", "key": "这不科学啊"}, {"author": "佑来了生活科学", "works": 1, "items": [{"url": "https://www.douyin.com/video/7063364154911935774", "author": "佑来了生活科学", "title": "圆筒中的物质与转动现象", "summary": "公开作品标题围绕圆筒里的未知物质提出问题，并标出分集序号。", "source": "2026-11-27 核对的公开页面索引；标题为概述", "first_seen": "2026-11-27T14:13:10+08:00", "seen": "2026-11-27T14:13:10+08:00", "keyword": "生活科普", "published": null, "likes": null, "notes": [{"id": 3, "url": "https://www.douyin.com/video/7063364154911935774", "aspect": "标题", "cue": "作品页标题", "evidence": "标题把待解释的对象缩小到圆筒，并把答案留给观众猜测。", "pattern": "提问", "created": "2026-11-27T14:13:10+08:00"}], "terms": ["生活科普"]}], "terms": ["生活科普"], "reviewed": 1, "patterns": [], "score": 5, "grade": "补看第二条作品", "key": "佑来了生活科学"}], "plans": [{"id": 1, "title": "演示 · 同一杯冰水，换个杯子为什么没有水珠？", "due": "2026-11-27", "stage": "选题", "brief": "受众：对生活细节好奇的上班族\n本期要解决：演示 · 同一杯冰水，换个杯子为什么没有水珠？\n栏目承诺：用三分钟讲清一个身边的问题\n参考作品：这不科学啊 · https://www.douyin.com/video/7494578413089459493\n可借鉴手法：反差（作品页标题，标题把一个熟悉的覆杯实验与放大尺度并列，给观众留下结果疑问。）\n原创迁移实验：先展示同一件事的两个不同结果，再回到唯一改变的条件。\n首镜并排两只杯子，请观众先猜。保持水温与机位，核对环境湿度，只测试第一镜；观察 24 小时的 5 秒留存率。", "work": "", "updated": "2026-11-27T14:13:10+08:00"}], "comments": [{"id": 1, "content": "演示留言：为什么玻璃杯外有水，保温杯外却很干？", "work": "demo-4", "kind": "选题需求", "created": "2026-11-27T14:13:10+08:00", "status": "待处理", "reply": ""}], "experiments": [{"id": 1, "hypothesis": "演示 · 开场先给对照组可以改善观看留存", "variable": "首镜显示两只杯子", "work": "demo-next", "metric": "retention5", "window": "24h", "baseline": 0.52, "goal": 0.5720000000000001, "controls": "{\"series\": \"生活科普\", \"traffic\": \"自然\", \"works\": [\"demo-5\", \"demo-4\", \"demo-3\", \"demo-2\", \"demo-1\"], \"latest_control\": \"2026-11-25T14:00:00+08:00\"}", "created": "2026-11-27T14:13:10+08:00", "status": "等待目标窗口", "result": "缺数据", "base_label": "52.0%", "goal_label": "57.2%", "controls_n": 5}], "today": [{"kind": "数据", "title": "补录最新观察", "detail": "最近数据采于 2026-11-25T14:00，先更新再调整排期。"}, {"kind": "排期", "title": "1 条内容到期", "detail": "演示 · 同一杯冰水，换个杯子为什么没有水珠？ · 选题"}, {"kind": "诊断", "title": "检查开头", "detail": "演示 · 纸袋提手的折角 · 5秒留存率 30.0%，历史中位数 52.5%，4 条对照。把关键动作或问题放进第一句话，其他镜头保持一致。"}, {"kind": "互动", "title": "1 条待处理反馈", "detail": "选题需求 · 演示留言：为什么玻璃杯外有水，保温杯外却很干？"}, {"kind": "对标", "title": "这不科学啊 · 补看第二条作品", "detail": "已归档 2 条作品，按样本证据安排下一次观察。"}, {"kind": "选题", "title": "补充未来七天排期", "detail": "计划 3 条，已安排 1 条。"}], "forecast": 1, "weekly": {"days": 7, "works": 4, "plans": 1, "series": {"生活科普": 4}, "signals": ["演示 · 纸袋提手的折角 · 检查开头。5秒留存率 30.0%，历史中位数 52.5%，4 条对照。", "演示 · 杯壁上的水滴 · 检查可复用价值。每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"], "insufficient": 2, "note": "按发布时间统计作品；详细指标按作品观察窗口比较。"}, "monthly": {"days": 30, "works": 5, "plans": 1, "series": {"生活科普": 5}, "signals": ["演示 · 纸袋提手的折角 · 检查开头。5秒留存率 30.0%，历史中位数 52.5%，4 条对照。", "演示 · 杯壁上的水滴 · 检查可复用价值。每千播放收藏与分享 10.0‰，历史中位数 12.7‰，3 条对照。"], "insufficient": 3, "note": "按发布时间统计作品；详细指标按作品观察窗口比较。"}, "count": 5, "snapshot_count": 5, "last_observed": "2026-11-25T14:00:00+08:00", "now": "2026-11-27T14:14:00+08:00", "sources": {"官方作品统计": false, "官方搜索": false, "公开网页索引": false}, "clocks": [], "events": [{"id": 4, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "锁定对照与实验目标"}, {"id": 3, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "新增原创排期"}, {"id": 2, "created": "2026-11-27T14:13:10+08:00", "kind": "操作", "message": "登记评论"}, {"id": 1, "created": "2026-11-27T14:13:10+08:00", "kind": "数据", "message": "合成演示 · 导入 5 条观察"}], "routines": [["策略与定位", "每月", "从近期作品和访谈中找到同一组人的重复问题。写清谁看、为什么关注、怎样证明。", "一条账号承诺、三个内容栏目与每周产能。", "在设置中修改定位，下周检查是否能覆盖评论里的真实需求。"], ["账号晨检", "每天", "核对最新快照的采集时点、流量来源、异常评论和到期排期。先区分数据滞后与作品表现。", "列出今天最影响目标的一项工作和证据。", "在今日工作中打开对应作品或排期。"], ["需求与舆情", "每天", "合并重复提问，区分新选题、事实纠错、商务线索与一般反馈。民生议题核对原始消息与日期。", "每条问题保留原话、来源作品和处理记录。", "在互动台登记原话，选一条转原创选题。"], ["同行选样", "每周", "同受众选直接同行，同形式选表达参考，保留普通作品作对照。核对作者主页，防止同名误合并。", "同作者至少两条作品、来源和入选理由。", "在同行雷达打开原作，保存作品链接、作者与匹配词。"], ["观看与拆解", "逐条", "第一遍只看体验。第二遍记录开头、承诺、证据出现、节奏转换、结尾和评论。只看标题时只写标题观察。", "每个判断附时间点、标题位置或具体评论，区分观察和推断。", "在作品卡片添加手法与证据，检查同作者不同作品是否重复。"], ["选题与脚本", "每次制作", "把用户问题和同行的方法放入自己的场景。明确一个问题、一次可见动作、一个可靠来源、一次结论回扣。", "一页原创简报，指定镜头证据、受众、搜索词及主指标。", "将同行样本或观众提问生成原创排期。"], ["制作与质检", "发布前", "按手机实际尺寸试看。对本账号核对首屏标题和副标题、人物动作、口型、关键音效、字幕层级及数据来源。", "通过核查的成片、可读封面和需要返修的镜头清单。", "把修改记入简报，完成后将制作阶段改为待发布。"], ["发布与分发", "发布日", "核对话题与正文是否回答同一搜索意图，检查合集、封面裁切、素材授权和当前平台标识要求。", "记录实际发布链接、发布时间和是否投流。", "从排期打开创作者中心，发布后填作品 ID。"], ["社区与事实纠错", "发布后", "先核验事实质疑，再回复高质量问题。把需公开更正的内容与下一期可讲的问题分开。", "回复草稿、处理结果与可跟进选题。", "在互动台记录，实际回复后标注处理结果。"], ["分析与实验", "2h / 24h / 72h / 7d", "同观察年龄、同系列及同流量类型比较。先定位开头流失、中段流失、收藏分享或关注转化，再只改变一项。", "锁定历史基线、目标提升和单一变量。", "在实验页创建，再导入到期作品快照。"], ["投流与商业", "有推广计划时", "先写目标、预算上限、归因窗口和停止条件，把付费与自然流量分开。商务内容单独归档客户要求和素材权利。", "投前假设与投后记录。缺成交或归因数据时保留未知。", "使用付费或混合分组，实际预算与投放由账号主人处理。"], ["周会与月度调整", "周 / 月", "周会回看样本与制作产能，月度审视栏目、受众、重复手法和商业目标。一次信号至少再做一次可比实验。", "列出保留、停止、下轮测试与负责人。", "导出复盘，依据实验结论调整下一轮选题和关键词。"]], "static": true, "demo": true}</script>
+  <script>"use strict";
 let S=JSON.parse(document.getElementById("state").textContent);
 const $=id=>document.getElementById(id);
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -19,7 +222,6 @@ const tag=(x,c="")=>'<span class="tag '+c+'">'+esc(x)+'</span>';
 const empty=t=>'<p class="empty">'+esc(t)+'</p>';
 const card=(t,body)=>'<article class="card"><h3>'+esc(t)+'</h3>'+body+'</article>';
 const box=(t,body)=>'<section class="box"><h2>'+esc(t)+'</h2>'+body+'</section>';
-const stat=(n,t)=>'<div class="card stat"><small>'+esc(t)+'</small><strong>'+esc(n)+'</strong></div>';
 const link=(url,title)=>'<a target="_blank" rel="noreferrer" href="'+esc(url)+'">'+esc(title)+'</a>';
 const searchUrl=q=>"https://www.douyin.com/search/"+encodeURIComponent(q);
 function input(n,t,v="",type="text",required=true){return '<label>'+esc(t)+'<input name="'+n+'" type="'+type+'" value="'+esc(v)+'" '+(required?"required":"")+'></label>'}
@@ -32,13 +234,108 @@ const tbl=(heads,data)=>'<div class="table"><table><thead><tr>'+heads.map(x=>'<t
 const studio="https://creator.douyin.com/creator-micro/home";
 const day=()=>S.now.slice(0,10);
 function planForm(extra="",value=""){return form("plan",extra+input("title","原创选题",value)+input("due","计划发布日",day(),"date")+area("brief","本期具体怎么拍，以及要观察哪个指标"),"加入排期")}
+const paths = {
+  home: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+  pulse: '<path d="M3 12h4l3-7 4 14 3-7h4"/>',
+  radar: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="m12 12 7-7"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7.5 3v4m9-4v4M3 10h18m-14 4h3m4 0h3"/>',
+  chat: '<path d="M20.5 14.5a3 3 0 0 1-3 3H10l-5 3v-3.2a3 3 0 0 1-2-2.8V7a3 3 0 0 1 3-3h11.5a3 3 0 0 1 3 3zM7 9h9m-9 4h6"/>',
+  flask: '<path d="M9 3h6m-5 0v6l-5.7 9.2A2 2 0 0 0 6 21h12a2 2 0 0 0 1.7-2.8L14 9V3M8 15h8"/>',
+  book: '<path d="M12 6c-3-2-6-2.5-9-1.5V19c3-1 6-1 9 1 3-2 6-2 9-1V4.5C18 3.5 15 4 12 6Zm0 0v14"/>',
+  source: '<ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+  sync: '<path d="M3 10a9 9 0 0 1 15-5l2 2m0-4v4h-4M21 14a9 9 0 0 1-15 5l-2-2m0 4v-4h4"/>',
+  print: '<path d="M7 8V3h10v5M7 17H4V9h16v8h-3"/><path d="M7 14h10v7H7zm9-3h1"/>',
+  arrow: '<path d="m10 5 7 7-7 7"/>',
+  import: '<path d="M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5"/>',
+  list: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  dial: '<path d="M4 17a9 9 0 1 1 16 0M12 12l4-5"/><circle cx="12" cy="12" r="1.7"/>'
+};
+const tabIcons = ['home','pulse','radar','calendar','chat','flask','book','source'];
+const icon = (name,size=20) => '<svg class="icon" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
+const tabButton = (dest,body,cls='',name=dest) => '<button type="button" class="'+cls+'" data-tab="'+esc(dest)+'" title="'+esc(name)+'" aria-label="'+esc(name)+'">'+body+'</button>';
+const cap = (label,glyph) => '<div class="panel-title">'+icon(glyph,16)+'<h2>'+esc(label)+'</h2></div>';
+const readout = (label,value,unit='') => '<div class="readout"><span>'+esc(label)+'</span><strong>'+esc(value)+'<small>'+esc(unit)+'</small></strong></div>';
+const viewChoice = {home:'schedule', diag:'retention5'};
+const choices = {
+  home: [['schedule','排期进度'],['feedback','反馈处理']],
+  diag: [['retention5','5 秒留存'],['completion','完播率']]
+};
+function dialModel(kind){
+  const key=viewChoice[kind];
+  if(kind==='diag'){
+    const work=S.decisions[0];
+    const signal=work?.signals.find(s=>s.key===key);
+    const value=signal && signal.value.endsWith('%') ? parseFloat(signal.value) : null;
+    return {value,label:key==='retention5'?'5 秒留存率':'完播率',context:work?.title||'等待作品快照',left:[['历史中位数',signal && signal.n>=3 ? signal.base:'—'],['可比作品',signal?.n??0,'条']],
+      entry:['数据接入','source'],secondary:['增长实验','flask']};
+  }
+  const feedback=key==='feedback';
+  const total=feedback?S.comments.length:S.profile.weekly_capacity;
+  const done=feedback?S.comments.filter(c=>c.status!=='待处理').length:S.forecast;
+  return {value:total?100*done/total:null,label:feedback?'反馈处理率':'七天排期覆盖率',context:feedback?'已处理反馈 / 全部反馈':'未来七天 / 每周产能',
+    left:feedback?[['已处理',done,'条'],['待处理',total-done,'条']]:[['已排期',done,'条'],['每周产能',total,'条']],
+    entry:['内容排期','calendar'],secondary:['评论互动','chat']};
+}
+function meterPanel(kind){
+  const m=dialModel(kind), value=m.value;
+  const displayed=value===null?'—':String(Number(value.toFixed(kind==='diag'?1:0)));
+  const arc=value===null?0:Math.max(0,Math.min(value,100))*2.7;
+  const segment=choices[kind].map(([key,label])=>'<button type="button" data-dial="'+key+'" aria-pressed="'+(viewChoice[kind]===key)+'">'+label+'</button>').join('');
+  return '<section class="instrument"><div class="instrument-head">'+cap(kind==='home'?'运营仪表盘':'作品表现仪表盘','dial')+
+    '<span class="instrument-sub">'+(kind==='home'?'未来 7 天':'最近一篇')+'</span></div><div class="instrument-body"><div class="readouts">'+m.left.map(a=>readout(...a)).join('')+
+    '</div><div class="meter-assembly"><div class="outer-orbit"></div><div class="meter '+(value===null?'no-value':'')+'" style="--sweep:'+arc+'deg">'+
+    '<div class="dial-track"></div><div class="ticks"></div><div class="knob"><i class="indicator"></i><strong>'+esc(displayed)+(value===null?'':'<small>%</small>')+'</strong><span>'+esc(m.label)+'</span></div></div>'+
+    tabButton(m.entry[0],icon(m.entry[1],16),'orb orb-a')+tabButton(m.secondary[0],icon(m.secondary[1],16),'orb orb-b')+
+    '</div></div><div class="dial-caption">'+esc(m.context)+'</div><div class="segments" aria-label="仪表指标">'+segment+'</div></section>';
+}
+function weekSeries(){
+  const start=Date.parse(S.now.slice(0,10)+'T00:00:00Z');
+  return Array.from({length:7},(_,i)=>{
+    const day=new Date(start+i*86400000).toISOString().slice(0,10);
+    return {label:day.slice(5).replace('-','/'),value:S.plans.filter(p=>p.due===day).length};
+  });
+}
+function linePlot(samples,unit){
+  const w=316,h=94,x0=14,x1=302,y0=12,y1=72;
+  const maximum=Math.max(1,...samples.map(a=>a.value));
+  const point=(v,i)=>[samples.length===1?(x0+x1)/2:x0+(x1-x0)*i/Math.max(1,samples.length-1),y1-(y1-y0)*v/maximum];
+  const points=samples.map((a,i)=>point(a.value,i));
+  let grid='';
+  for(const y of [y0,(y0+y1)/2,y1])grid+='<path class="gridline" d="M'+x0+' '+y+'H'+x1+'"/>';
+  const line=points.map((p,i)=>(i?'L':'M')+p.map(a=>a.toFixed(2)).join(' ')).join(' ');
+  const circles=points.map(([x,y],i)=>'<circle cx="'+x+'" cy="'+y+'" r="3"><title>'+esc(samples[i].label+' · '+samples[i].value+unit)+'</title></circle>').join('');
+  const labels=samples.length?'<div class="axis"><span>'+esc(samples[0].label)+'</span><span>'+esc(samples[samples.length-1].label)+'</span></div>':'';
+  return '<div class="chart"><svg preserveAspectRatio="none" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(samples.map(v=>v.label+' '+v.value+unit).join('，')||'暂无可绘制数据')+'">'+grid+
+    (points.length?'<path class="chart-fill" d="'+line+' L'+points[points.length-1][0]+' '+y1+' L'+points[0][0]+' '+y1+'Z"/><path class="chart-line" d="'+line+'"/>'+circles:'')+'</svg>'+
+    (points.length?'':'<span class="chart-empty">等待作品快照</span>')+labels+'</div>';
+}
+function sidePanels(kind){
+  const diag=kind==='diag', key=viewChoice.diag;
+  const samples=diag?S.decisions.slice(0,7).reverse().flatMap(d=>{
+    const s=d.signals.find(a=>a.key===key);
+    return s?.value.endsWith('%')?[{label:d.published.slice(5,10).replace('-','/'),value:parseFloat(s.value)}]:[];
+  }):weekSeries();
+  const title=diag?(key==='retention5'?'近期作品留存':'近期作品完播'):'七天排期分布';
+  const desc=diag?'各作品采用快照':'按计划发布日期';
+  return '<div class="side-panels"><section class="surface trend-card">'+cap(title,'pulse')+'<div class="plot-info">'+esc(desc)+'<span><i></i>'+esc(diag?'比例':'条数')+'</span></div>'+linePlot(samples,diag?'%':' 条')+'</section>'+
+    '<section class="surface data-card">'+cap('作品数据','source')+'<div class="data-numbers">'+readout('已记录作品',S.count,'条')+readout('指标快照',S.snapshot_count,'份')+'</div>'+
+    tabButton('数据接入',icon('import',15)+'<span>'+(S.static?'查看数据接入':'导入作品快照')+'</span>'+icon('arrow',13),'data-link',S.static?'查看数据接入':'导入作品快照')+'</section></div>';
+}
+function dashboard(kind){return '<div class="dashboard">'+meterPanel(kind)+sidePanels(kind)+'</div>'}
+const taskPage={'数据':'数据接入','排期':'内容排期','选题':'内容排期','诊断':'账号诊断','复盘':'账号诊断','互动':'评论互动','对标':'同行雷达','实验':'增长实验'};
 function today(){
- const blocks='<div class="stats">'+stat(S.count,"已记录作品")+stat(S.snapshot_count,"指标快照")+stat(S.forecast+"/"+S.profile.weekly_capacity,"未来七天排期")+'</div>';
- const jobs=S.today.map(j=>'<div class="item">'+tag(j.kind)+'<h3>'+esc(j.title)+'</h3><p>'+esc(j.detail)+'</p></div>').join("");
- return blocks+'<div class="grid">'+box("今日优先事项",jobs)+box("本轮运营",'<h3>'+esc(S.profile.name)+'</h3><p>'+esc(S.profile.promise)+'</p><p class="sub">'+esc(S.profile.audience)+'</p>'+S.profile.keywords.map(k=>tag(k)).join("")+'<div class="item"><h3>最近观察</h3>'+esc(S.last_observed||"尚未接入自己的作品")+'</div>'+[S.weekly,S.monthly].map(r=>'<div class="item"><b>近 '+r.days+' 天</b><p>'+r.works+' 条已记录作品 · '+r.plans+' 条排期</p><small>'+esc(Object.entries(r.series).map(([k,v])=>k+" "+v).join(" / ")||"尚无该周期作品")+r.signals.map(t=>"<p>"+esc(t)+"</p>").join("")+"<p>待补对照 "+r.insufficient+" 条作品</p>"+'</small></div>').join(""))+'</div>'+box("最近运行",S.events.slice(0,6).map(e=>'<div class="item"><small>'+esc(e.created.slice(5,16))+' · '+esc(e.kind)+'</small><div>'+esc(e.message)+'</div></div>').join("")||empty("首轮同步后显示运行记录。"));
+  const jobs=S.today.map(j=>'<div class="queue-row"><span class="queue-icon">'+icon(tabIcons[tabs.indexOf(taskPage[j.kind]||'今日工作')],17)+'</span><div><small>'+esc(j.kind)+'</small><h3>'+esc(j.title)+'</h3><p>'+esc(j.detail)+'</p></div>'+
+      tabButton(taskPage[j.kind]||'今日工作',icon('arrow',14),'row-go','前往'+(taskPage[j.kind]||'今日工作'))+'</div>').join('');
+  const periods=[S.weekly,S.monthly].map(r=>'<div class="item"><h3>近 '+r.days+' 天</h3><p>'+r.works+' 条已记录作品 · '+r.plans+' 条排期</p><small>'+
+      esc(Object.entries(r.series).map(([k,v])=>k+' '+v).join(' / ')||'尚无该周期作品')+'</small>'+r.signals.map(t=>'<p>'+esc(t)+'</p>').join('')+'<p class="sub">待补对照 '+r.insufficient+' 条作品</p></div>').join('');
+  const history=S.events.slice(0,6).map(e=>'<div class="item"><small>'+esc(e.created.slice(5,16))+' · '+esc(e.kind)+'</small><div>'+esc(e.message)+'</div></div>').join('');
+  return dashboard('home')+'<div class="grid overview-grid">'+box('今日优先事项',jobs||empty('目前没有待处理事项。'))+
+    box('本轮运营','<h3>'+esc(S.profile.name)+'</h3><p>'+esc(S.profile.promise)+'</p><p class="sub">'+esc(S.profile.audience)+'</p>'+S.profile.keywords.map(k=>tag(k)).join('')+
+    '<div class="item"><small>最近观察</small><p>'+esc(S.last_observed||'尚未接入自己的作品')+'</p></div>'+fold('近 7 天与 30 天复盘',periods))+'</div>'+box('最近运行',history||empty('首轮同步后显示运行记录。'));
 }
 function diagnostics(){
- return '<p class="sub">比较同系列、同流量类型、同观察窗口的历史中位数。窗口外和缺字段会单列，未知指标不计为零。</p>'+(!S.decisions.length?box("等待自己的作品",empty("在「数据接入」导入真实快照后，这里会列出每条作品的依据和下一步。")):S.decisions.map(d=>box(d.title,tag(d.series)+tag(d.traffic)+tag(d.window)+tag(d.label,"warn")+'<p>'+(d.trend?"同源相邻观察间增加 "+esc(d.trend.delta)+" 次播放，跨度 "+esc(d.trend.hours)+" 小时。 ":"")+esc(d.evidence)+'</p><b>'+esc(d.action)+'</b><p class="sub">采用快照 '+esc(d.observed.slice(0,16))+' · 最近采集 '+esc(d.latest_observed.slice(0,16))+' · '+esc(d.origin)+'</p>'+tbl(["指标","本篇","历史中位数","对照作品数"],d.signals.map(s=>[s.name,s.value,s.n>=3?s.base:"待积累",s.n]))+fold("最新原始指标",tbl(["指标","值"],Object.entries(d.latest).map(([k,v])=>[({"plays":"播放","likes":"赞","comments":"评论","shares":"分享","saves":"收藏","follows":"新增关注","completion":"完播率","retention5":"5秒留存率"})[k],v==null?"未提供":(["completion","retention5"].includes(k)?(100*v).toFixed(1)+"%":v)])) ))).join(""));
+ return dashboard('diag')+'<p class="sub diag-note">比较同系列、同流量类型、同观察窗口的历史中位数。窗口外和缺字段会单列，未知指标不计为零。</p>'+(!S.decisions.length?box("等待自己的作品",empty("在「数据接入」导入真实快照后，这里会列出每条作品的依据和下一步。")):S.decisions.map(d=>box(d.title,tag(d.series)+tag(d.traffic)+tag(d.window)+tag(d.label,"warn")+'<p>'+(d.trend?"同源相邻观察间增加 "+esc(d.trend.delta)+" 次播放，跨度 "+esc(d.trend.hours)+" 小时。 ":"")+esc(d.evidence)+'</p><b>'+esc(d.action)+'</b><p class="sub">采用快照 '+esc(d.observed.slice(0,16))+' · 最近采集 '+esc(d.latest_observed.slice(0,16))+' · '+esc(d.origin)+'</p>'+tbl(["指标","本篇","历史中位数","对照作品数"],d.signals.map(s=>[s.name,s.value,s.n>=3?s.base:"待积累",s.n]))+fold("最新原始指标",tbl(["指标","值"],Object.entries(d.latest).map(([k,v])=>[({"plays":"播放","likes":"赞","comments":"评论","shares":"分享","saves":"收藏","follows":"新增关注","completion":"完播率","retention5":"5秒留存率"})[k],v==null?"未提供":(["completion","retention5"].includes(k)?(100*v).toFixed(1)+"%":v)])) ))).join(""));
 }
 function radar(){
  const addPeer=form("peers",input("url","抖音作品或主页完整链接","","url")+input("author","作者（同名可用主页链接作标识）","", "text",false)+input("title","作品标题或主页名称")+input("keyword","匹配主题","", "text",false)+area("summary","观察摘要","",false),"存入雷达");
@@ -59,9 +356,12 @@ function settings(){
  box("联网来源",Object.entries(S.sources).map(([k,v])=>'<div class="item">'+tag(v?"已配置":"未配置",v?"":"warn")+' '+esc(k)+'</div>').join("")+'<small>有资格的应用可接官方搜索和经营授权统计。公开网页索引有收录延迟。密钥只通过环境变量传入。接入步骤见 README。</small>')+box("连接记录",S.clocks.length?tbl(["来源","下次运行（北京时间）","连续异常"],S.clocks.map(x=>[x.name,x.next_time.slice(0,19),x.failures])):empty("尚未运行联网来源。"));
 }
 function draw(){
- $("mode").textContent=(S.demo?"演示 · ":"")+(S.static?"离线快照":"本地工作台");$("fresh").textContent=S.now.slice(0,16).replace("T"," ")+" 北京时间";
- $("date").textContent=S.profile.name+" / "+S.now.slice(0,10);$("account").innerHTML="<strong>"+esc(S.profile.name)+"</strong>"+esc(S.profile.audience);
- $("title").textContent=page;$("nav").innerHTML=tabs.map(t=>'<button data-tab="'+esc(t)+'" class="'+(page===t?"active":"")+'">'+esc(t)+'</button>').join("");
+ $("mode").textContent=(S.demo?"演示 · ":"")+(S.static?"离线快照":"本地工作台");
+ $("fresh").textContent="数据读取于 "+S.now.slice(0,16).replace("T"," ")+" 北京时间";
+ $("date").textContent=S.now.slice(0,10).replaceAll("-"," / ");
+ $("account").textContent=S.profile.name;
+ $("title").textContent=page;
+ $("nav").innerHTML=tabs.map((t,i)=>'<button type="button" data-tab="'+t+'" aria-label="'+t+'" title="'+t+'"'+(page===t?' aria-current="page"':'')+'>'+icon(tabIcons[i],20)+'<span>'+t+'</span></button>').join("");
  $("view").innerHTML=[today,diagnostics,radar,calendar,comments,experiments,playbook,settings][tabs.indexOf(page)]();
  $("sync").hidden=S.static;
 }
@@ -69,11 +369,32 @@ function notice(s){$("notice").hidden=false;$("notice").textContent=s}
 async function reloadState(){let r=await fetch("/api/state",{cache:"no-store"});if(!r.ok)throw Error("读取失败");S=await r.json();draw()}
 async function submit(b){let r=await fetch("/api/action",{method:"POST",headers:{"Content-Type":"application/json","X-Operator-Request":"1"},body:JSON.stringify(b)});let result=await r.json();if(!r.ok)throw Error(result.error||"保存失败");await reloadState();notice(result.message)}
 document.addEventListener("submit",async e=>{e.preventDefault();const f=e.target;const btn=f.querySelector("button");btn.disabled=true;try{await submit({...Object.fromEntries(new FormData(f)),command:f.dataset.op})}catch(x){notice(x.message)}finally{btn.disabled=false}});
-$("nav").addEventListener("click",e=>{const b=e.target.closest("button");if(b){page=b.dataset.tab;history.replaceState(null,"","#"+encodeURIComponent(page));draw()}});
+document.addEventListener("click",e=>{
+ const dial=e.target.closest("button[data-dial]");
+ if(dial){
+   const kind=page==="今日工作"?"home":"diag";
+   viewChoice[kind]=dial.dataset.dial;
+   $("view").querySelector(".dashboard").outerHTML=dashboard(kind);
+   $("view").querySelector('[data-dial="'+viewChoice[kind]+'"]').focus({preventScroll:true});
+   return;
+ }
+ const button=e.target.closest("button[data-tab]");
+ if(button && tabs.includes(button.dataset.tab) && page!==button.dataset.tab){
+   page=button.dataset.tab;
+   history.replaceState(null,"","#"+encodeURIComponent(page));
+   draw();
+   window.scrollTo(0,0);
+   $("title").focus({preventScroll:true});
+ }
+});
 document.addEventListener("change",async e=>{if(e.target.id==="csvfile"&&e.target.files[0]){const f=e.target.files[0];if(f.size>3_800_000){notice("文件过大，请使用 inbox 文件夹。");return}e.target.closest("form").elements.csv.value=await f.text()}});
 $("sync").onclick=async()=>{$("sync").disabled=true;try{await submit({command:"sync"})}catch(e){notice(e.message)}finally{$("sync").disabled=false}};
 $("print").onclick=()=>window.print();
+$("sync").innerHTML=icon("sync",16)+"<span>立即检查</span>";
+$("print").innerHTML=icon("print",17);
+$("title").setAttribute("tabindex","-1");
 draw();if(!S.static)setInterval(()=>{if(!document.hidden&&!document.querySelector("details[open]")&&!["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))reloadState().catch(()=>notice("工作台连接中断，已保留当前画面。"))},30000);
 
-</script></body></html>
-
+</script>
+</body>
+</html>

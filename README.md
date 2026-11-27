@@ -4,7 +4,7 @@
 
 例如，一条生活科普视频发出 24 小时后，5 秒留存率只有 30.0%，同系列此前四条作品的中位数是 52.5%。工作台会把作品、对照数和两组数值列在一起，提醒编辑检查开头。你可以把“第一镜就让观众看到实验”写进下一条简报，发布后回到同一时间窗口验证。下文用这个内置案例演示。
 
-[下载 v0.1.0 工作台 ZIP](https://github.com/demonlee0727-glitch/douyin-operator/releases/download/v0.1.0/douyin-operator-v0.1.0.zip) · [运营值班手册](OPERATIONS.md) · [CSV 字段模板](examples/metrics.csv) · [与 Codex 协作](AGENTS.md)
+[下载 v0.2.0 工作台 ZIP](https://github.com/demonlee0727-glitch/douyin-operator/releases/download/v0.2.0/douyin-operator-v0.2.0.zip) · [运营值班手册](OPERATIONS.md) · [CSV 字段模板](examples/metrics.csv) · [与 Codex 协作](AGENTS.md)
 
 ## 第一次使用
 
@@ -27,6 +27,12 @@ python3 app.py serve --demo --open
 Windows 安装 Python 后，可将命令中的 `python3` 换成 `py -3`。浏览器会打开 `http://127.0.0.1:8765`。启动窗口保持开启，按 **Ctrl+C** 停止。体验后重新运行 `python3 app.py serve --open` 即可切换到正式账号，演示记录保存在独立目录。
 
 ![首次使用操作图：先到数据接入配置账号与导入快照，再从今日工作找到到期事项和诊断](docs/images/first-run.png)
+
+## 怎样读首页的仪表盘
+
+打开「今日工作」，中央旋钮显示未来七天的排期覆盖率。例如每周能做 3 条、已排 1 条时，读数为 33%。点下方的「反馈处理」可查看已处理反馈占全部反馈的比例。右侧折线按日期展示排期条数，点「导入作品快照」进入数据接入页面。
+
+打开「账号诊断」，旋钮显示最近一篇作品采用快照的 5 秒留存率或完播率。左侧同时列出历史中位数和可比作品数；右侧趋势按作品发布时间排列，具体观察窗口见作品明细。读数 `—` 表示缺少该项数据，`0%` 表示已记录的零值。
 
 ## 工作台的八个页面
 
